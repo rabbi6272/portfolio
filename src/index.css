@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  font-family: Lato, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.blinking-cursor {
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  from,
+  to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Infinite scroll mask gradient for smooth edges */
+.mask-gradient {
+  position: relative;
+}
+
+.mask-gradient::before,
+.mask-gradient::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.mask-gradient::before {
+  left: 0;
+  background: linear-gradient(to right, #111827, transparent);
+}
+
+.mask-gradient::after {
+  right: 0;
+  background: linear-gradient(to left, #111827, transparent);
+}
