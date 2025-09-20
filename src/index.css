@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  font-family: Lato, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Lato, Poppins, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;
@@ -9,6 +9,21 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+::-webkit-scrollbar {
+  width: 0px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+/* ::-webkit-scrollbar-track {
+  background: #111827;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2937;
+} */
 
 .blinking-cursor {
   animation: blink 1s step-end infinite;

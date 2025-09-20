@@ -131,21 +131,24 @@ export default function Skills() {
   return (
     <section
       ref={sectionRef}
-      className="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white px-2 overflow-hidden"
+      className="min-h-screen px-1 flex flex-col items-center justify-center bg-gray-900 text-white overflow-hidden"
     >
-      <h2 className="text-4xl font-bold mb-12">Skills</h2>
+      <h2 className="text-5xl md:text-6xl font-normal mb-12">Skills</h2>
 
       {/* Infinite scroll container */}
       <div
         ref={containerRef}
-        className="w-full lg:w-[80%] overflow-hidden mask-gradient"
+        className="w-full md:w-[90%] lg:w-[80%] overflow-hidden mask-gradient"
       >
-        <div ref={scrollRef} className="flex gap-6 w-max">
+        <div
+          ref={scrollRef}
+          className="flex gap-8 w-max text-gray-300 text-lg md:text-md font-normal"
+        >
           {/* First set of skills */}
           {skills.map((skill, i) => (
             <div
               key={`first-${i}`}
-              className="flex-shrink-0 flex flex-col items-center gap-3 px-10 py-6 text-lg bg-gray-800 border rounded-xl shadow-lg whitespace-nowrap min-w-[120px]"
+              className="flex-shrink-0 flex flex-col items-center justify-center gap-4 bg-gray-800 border rounded-xl shadow-lg whitespace-nowrap w-[200px] md:w-[190px] h-[220px] md:[210px]"
               style={{
                 borderColor: skill.color + "40", // 30% opacity
                 boxShadow: `0 4px 20px ${skill.color}30`, // Subtle glow
@@ -154,11 +157,11 @@ export default function Skills() {
               <img
                 src={skill.icon}
                 alt={skill.name}
-                className="w-20 h-20 object-cover"
+                className="w-20 md:w-20 h-20 md:h-20 object-cover"
               />
 
               {/* Skill Name */}
-              <span className="text-gray-200">{skill.name}</span>
+              <span>{skill.name}</span>
             </div>
           ))}
 
@@ -166,7 +169,7 @@ export default function Skills() {
           {skills.map((skill, i) => (
             <div
               key={`second-${i}`}
-              className="flex-shrink-0 flex flex-col items-center gap-3 px-10 py-6 text-lg bg-gray-800 border rounded-xl shadow-lg whitespace-nowrap min-w-[120px]"
+              className="flex-shrink-0 flex flex-col items-center justify-center gap-4 bg-gray-800 border rounded-xl shadow-lg whitespace-nowrap w-[200px] h-[220px]"
               style={{
                 borderColor: skill.color + "40",
                 boxShadow: `0 4px 20px ${skill.color}30`,
@@ -175,10 +178,10 @@ export default function Skills() {
               <img
                 src={skill.icon}
                 alt={skill.name}
-                className="w-20 h-20 object-cover"
+                className="w-20 md:w-20 h-20 md:h-20 object-cover"
               />
 
-              <span className="text-gray-200">{skill.name}</span>
+              <span>{skill.name}</span>
             </div>
           ))}
         </div>

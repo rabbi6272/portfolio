@@ -27,7 +27,7 @@ export default function Projects() {
       scrollTrigger: {
         trigger: wrapperRef.current,
         pin: true,
-        scrub: 1,
+        scrub: 2,
         start: "top top",
         end: () => `+=${window.innerWidth * 4}`,
         invalidateOnRefresh: true,
