@@ -2,12 +2,29 @@
 
 :root {
   font-family: Lato, Poppins, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  line-height: 1.2;
   font-weight: 400;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #6b645c;
+}
+@font-face {
+  font-family: "Zodiac";
+  src: url("/font/Zodiak.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Zodiac", Poppins, Helvetica, Arial, sans-serif;
+  color: #d1d1c7;
 }
 ::-webkit-scrollbar {
   width: 0px;

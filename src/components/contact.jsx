@@ -21,7 +21,7 @@ export default function Contact() {
   return (
     <section
       ref={contactRef}
-      className="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white px-8"
+      className="min-h-screen flex flex-col items-center justify-center px-8"
     >
       <h2 className="text-4xl font-bold mb-6">Contact</h2>
       <form className="w-full max-w-md flex flex-col gap-4">
@@ -42,7 +42,7 @@ export default function Contact() {
         />
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-600 py-2 rounded font-semibold"
+          className="text-white bg-blue-500 hover:bg-blue-600 py-2 rounded font-semibold"
         >
           Send
         </button>

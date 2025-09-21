@@ -5,10 +5,31 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
-  { title: "Ruet CSE Archive", desc: "A website for the CSE department." },
-  { title: "E-commerce App", desc: "A modern shopping platform." },
-  { title: "MovieHub", desc: "Browse and save your favorite movies." },
-  { title: "Portfolio", desc: "Personal portfolio with GSAP." },
+  {
+    title: "Ruet CSE Archive",
+    desc: "A website for the CSE department.",
+    image: "/projects/csearchive.png",
+  },
+  {
+    title: "Shoppify App",
+    desc: "A modern shopping platform.",
+    image: "/projects/shoppify.png",
+  },
+  {
+    title: "MovieHub App",
+    desc: "Browse and save your favorite movies.",
+    image: "/projects/movieshub.png",
+  },
+  {
+    title: "Todo App",
+    desc: "Personal task manager.",
+    image: "/projects/todolist.png",
+  },
+  {
+    title: "Guess Game",
+    desc: "A game to guess the number.",
+    image: "/projects/guessgame.png",
+  },
 ];
 
 export default function Projects() {
@@ -22,12 +43,13 @@ export default function Projects() {
     gsap.set(el, { xPercent: 0 });
 
     const animation = gsap.to(el, {
-      xPercent: -75,
+      xPercent: -100,
       ease: "none",
       scrollTrigger: {
         trigger: wrapperRef.current,
         pin: true,
         scrub: 2,
+        snap: 1 / (projects.length - 1),
         start: "top top",
         end: () => `+=${window.innerWidth * 4}`,
         invalidateOnRefresh: true,
@@ -40,29 +62,42 @@ export default function Projects() {
   }, []);
 
   return (
-    <section
-      ref={wrapperRef}
-      className=" text-white overflow-hidden"
-      id="wrapper"
-    >
-      {/* wrapper is trigger */}
-      <div
-        ref={containerRef}
-        className="flex w-[400vw] h-auto"
-        id="horizontal-container"
+    <>
+      <h1 className="text-6xl text-gray-300 font-bold my-6 text-center">
+        My Works
+      </h1>
+      <section
+        ref={wrapperRef}
+        className=" text-white overflow-hidden"
+        id="wrapper"
       >
-        {projects.map((proj, i) => (
-          <div
-            key={i}
-            className="project-card h-screen w-screen flex-shrink-0 grid place-items-center"
-          >
-            <div className="w-[80vw] h-[80%] bg-slate-700 rounded-lg flex flex-col items-center justify-center shadow-lg">
-              <h3 className="text-3xl font-bold mb-2">{proj.title}</h3>
-              <p className="max-w-md text-center">{proj.desc}</p>
+        {/* wrapper is trigger */}
+        <div
+          ref={containerRef}
+          className="flex w-[400vw] h-auto"
+          id="horizontal-container"
+        >
+          {/* container is scrollable */}
+          {projects.map((proj, i) => (
+            <div
+              key={i}
+              className="project-card h-screen w-screen flex-shrink-0 grid place-items-center"
+            >
+              <div className="w-[95vw] md:w-[60vw] h-[50vh] md:h-[80vh] border border-gray-500 rounded-lg flex flex-col items-center justify-center ">
+                <img
+                  src={proj.image}
+                  alt={proj.title}
+                  className="aspect-[4/3] w-full p-2 object-cover object-top overflow-hidden rounded-xl"
+                />
+                <div className="w-full flex flex-col items-center p-4">
+                  <h3 className="text-3xl font-bold">{proj.title}</h3>
+                  <p className="max-w-md">{proj.desc}</p>
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }

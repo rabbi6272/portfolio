@@ -138,8 +138,8 @@ export default function InfiniteScroll({
       ref={wrapperRef}
       style={{ maxHeight }}
     >
-      <div className="absolute top-0 left-0 w-full h-[10%] bg-gradient-to-b from-gray-900 to-transparent z-10 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-full h-[10%] bg-gradient-to-t from-gray-900 to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute top-0 left-0 w-full h-[10%] bg-gradient-to-b from-black to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-full h-[10%] bg-gradient-to-t from-black to-transparent z-10 pointer-events-none"></div>
 
       <div
         className="w-[300px] md:w-[400px] flex flex-col overscroll-contain px-4 cursor-grab origin-center"

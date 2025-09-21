@@ -18,7 +18,7 @@ export default function About() {
   return (
     <section
       ref={aboutRef}
-      className="min-h-screen flex items-center justify-center bg-gray-800 text-white px-8"
+      className="min-h-screen flex items-center justify-center  px-8"
     >
       <h2 className="text-3xl font-semibold max-w-2xl text-center">
         {text.split("").map((char, i) => (

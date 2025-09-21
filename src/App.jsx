@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
 import Hero from "./components/hero";
 import About from "./components/about";
-import Skills from "./components/skills";
 import Projects from "./components/projects";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
@@ -11,57 +10,57 @@ import InfiniteScroll from "./components/infinitescroll";
 const items = [
   {
     name: "React",
-    icon: "/reactjs.svg", // Component
+    icon: "/skills/reactjs.svg", // Component
     color: "#61DAFB",
   },
   {
     name: "Next.js",
-    icon: "/nextjs.svg", // Public folder path
+    icon: "/skills/nextjs.svg", // Public folder path
     color: "#000000",
   },
   {
     name: "Node.js",
-    icon: "/nodejs.svg",
+    icon: "/skills/nodejs.svg",
     color: "#339933",
   },
   {
     name: "Express.js",
-    icon: "/expressjs.svg",
+    icon: "/skills/expressjs.svg",
     color: "#000000",
   },
   {
     name: "Tailwind",
-    icon: "/tailwindcss.svg",
+    icon: "/skills/tailwindcss.svg",
     color: "#06B6D4",
   },
   {
     name: "JavaScript",
-    icon: "/javascript.svg",
+    icon: "/skills/javascript.svg",
     color: "#F7DF1E",
   },
   {
     name: "MongoDB",
-    icon: "/mongodb.svg",
+    icon: "/skills/mongodb.svg",
     color: "#47A248",
   },
   {
     name: "Firebase",
-    icon: "/firebase.svg",
+    icon: "/skills/firebase.svg",
     color: "#FFCA28",
   },
   {
     name: "Python",
-    icon: "/python.svg",
+    icon: "/skills/python.svg",
     color: "#3776AB",
   },
   {
     name: "C",
-    icon: "/c.svg",
+    icon: "/skills/c.svg",
     color: "#A8B9CC",
   },
   {
     name: "C++",
-    icon: "/cpp.svg",
+    icon: "/skills/cpp.svg",
     color: "#00599C",
   },
 ];
@@ -79,7 +78,7 @@ function App() {
   }, []);
 
   return (
-    <main className="bg-gray-900">
+    <main className="bg-[#080807]">
       <Hero />
       <About />
       {/* <Skills /> */}
