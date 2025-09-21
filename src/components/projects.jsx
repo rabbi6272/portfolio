@@ -63,9 +63,7 @@ export default function Projects() {
 
   return (
     <>
-      <h1 className="text-6xl text-gray-300 font-bold my-6 text-center">
-        My Works
-      </h1>
+      <h1 className="text-6xl font-bold my-6 text-center">My Works</h1>
       <section
         ref={wrapperRef}
         className=" text-white overflow-hidden"
@@ -83,14 +81,16 @@ export default function Projects() {
               key={i}
               className="project-card h-screen w-screen flex-shrink-0 grid place-items-center"
             >
-              <div className="w-[95vw] md:w-[60vw] h-[50vh] md:h-[80vh] border border-gray-500 rounded-lg flex flex-col items-center justify-center ">
+              <div className="w-[95vw] md:w-[70vw] h-[50vh] md:h-[70vh] xl:h-[90vh] bg-gray-900 border border-gray-700 rounded-lg flex flex-col items-center justify-center ">
                 <img
                   src={proj.image}
                   alt={proj.title}
                   className="aspect-[4/3] w-full p-2 object-cover object-top overflow-hidden rounded-xl"
                 />
-                <div className="w-full flex flex-col items-center p-4">
-                  <h3 className="text-3xl font-bold">{proj.title}</h3>
+                <div className="w-full flex flex-col items-center p-4 md:p-6 lg:p-8">
+                  <h3 className="text-3xl font-bold font-sans mb-2">
+                    {proj.title}
+                  </h3>
                   <p className="max-w-md">{proj.desc}</p>
                 </div>
               </div>

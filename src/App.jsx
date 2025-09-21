@@ -80,7 +80,7 @@ function App() {
   return (
     <main className="bg-[#080807]">
       <Hero />
-      <About />
+      {/* <About /> */}
       {/* <Skills /> */}
       <div style={{ height: "100vh", position: "relative" }}>
         <InfiniteScroll

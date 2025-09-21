@@ -78,3 +78,30 @@ h6 {
   right: 0;
   background: linear-gradient(to left, #111827, transparent);
 }
+.bg-container {
+  transform: translateY(-100%);
+  animation: slideIn 2s forwards;
+}
+@keyframes slideIn {
+  to {
+    transform: translateY(0);
+  }
+}
+.name-container {
+  height: calc(100vh - 70px);
+}
+.navbar-container {
+  opacity: 0;
+  animation: slideDown 1s forwards;
+  animation-delay: 2s;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
