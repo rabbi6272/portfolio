@@ -7,11 +7,22 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* color: #6b645c; */
 }
 @font-face {
   font-family: "Zodiac";
   src: url("/font/Zodiak.ttf") format("truetype");
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alpino";
+  src: url("/font/Alpino.ttf") format("truetype");
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Chillax";
+  src: url("/font/Chillax.ttf") format("truetype");
   font-style: normal;
   font-display: swap;
 }
@@ -21,7 +32,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Zodiac", Poppins, Helvetica, Arial, sans-serif;
+  font-family: "Alpino", Poppins, Helvetica, Arial, sans-serif;
   /* color: #d1d1c7; */
 }
 ::-webkit-scrollbar {
@@ -33,12 +44,6 @@ h6 {
 ::-webkit-scrollbar-thumb {
   background: transparent;
 }
-/* ::-webkit-scrollbar-track {
-  background: #111827;
-}
-::-webkit-scrollbar-thumb {
-  background: #1f2937;
-} */
 
 .blinking-cursor {
   animation: blink 1s step-end infinite;
@@ -50,6 +55,74 @@ h6 {
   }
   50% {
     opacity: 1;
+  }
+}
+
+.bg-container {
+  border-radius: 100%;
+  transform: translateY(-100%);
+  animation: slideIn 1.5s forwards;
+}
+@keyframes slideIn {
+  to {
+    transform: translateY(0);
+    border-radius: 0;
+  }
+}
+
+.name-container {
+  height: calc(100vh - 90px);
+}
+@media screen and (max-width: 768px) {
+  .name-container {
+    height: calc(100vh - 100px);
+  }
+}
+
+.navbar-container {
+  opacity: 0;
+  animation: slideDown 1s forwards;
+  animation-delay: 2s;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#hero-text-left {
+  opacity: 0;
+  animation: slideInLeft 1s forwards;
+  animation-delay: 2.5s;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+#hero-text-right {
+  opacity: 0;
+  animation: slideInRight 1s forwards;
+  animation-delay: 2.5s;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -77,31 +150,4 @@ h6 {
 .mask-gradient::after {
   right: 0;
   background: linear-gradient(to left, #111827, transparent);
-}
-.bg-container {
-  transform: translateY(-100%);
-  animation: slideIn 2s forwards;
-}
-@keyframes slideIn {
-  to {
-    transform: translateY(0);
-  }
-}
-.name-container {
-  height: calc(100vh - 70px);
-}
-.navbar-container {
-  opacity: 0;
-  animation: slideDown 1s forwards;
-  animation-delay: 2s;
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }

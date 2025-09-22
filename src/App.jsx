@@ -67,20 +67,20 @@ const items = [
 
 function App() {
   useEffect(() => {
-    const lenis = new Lenis();
-
+    const lenis = new Lenis({
+      lerp: 0.1,
+      smoothWheel: true,
+    });
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
-
     requestAnimationFrame(raf);
-  }, []);
-
+  });
   return (
     <main className="bg-[#080807]">
       <Hero />
-      {/* <About /> */}
+      <About />
       {/* <Skills /> */}
       <div style={{ height: "100vh", position: "relative" }}>
         <InfiniteScroll

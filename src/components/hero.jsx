@@ -1,17 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-
-const words = ["Web Developer", "React Enthusiast", "Creative Coder"];
 
 export default function Hero() {
   const heroRef = useRef();
   const avatarRef = useRef();
   const headingRef = useRef();
-  const [text, setText] = useState("");
-  const [wordIndex, setWordIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
 
   useEffect(() => {
     if (!headingRef.current) return;
@@ -26,14 +21,14 @@ export default function Hero() {
       return;
     }
 
-    const tl = gsap.timeline({ delay: 2 });
+    const tl = gsap.timeline({ delay: 1 });
     tl.fromTo(
       chars,
       { y: "1.1em", opacity: 0, willChange: "transform" },
       {
         y: "0em",
         opacity: 1,
-        duration: 1,
+        duration: 0.8,
         stagger: { each: 0.05, from: 0 },
         force3D: true,
         autoRound: false,
@@ -45,27 +40,10 @@ export default function Hero() {
       {
         y: "0%",
         opacity: 1,
-        duration: 1.5,
+        duration: 1,
       }
     );
   }, []);
-
-  // Typewriter effect
-  useEffect(() => {
-    if (charIndex < words[wordIndex].length) {
-      const timeout = setTimeout(() => {
-        setText((prev) => prev + words[wordIndex][charIndex]);
-        setCharIndex(charIndex + 1);
-      }, 100);
-      return () => clearTimeout(timeout);
-    } else {
-      setTimeout(() => {
-        setText("");
-        setCharIndex(0);
-        setWordIndex((prev) => (prev + 1) % words.length);
-      }, 2000);
-    }
-  }, [charIndex, wordIndex]);
 
   return (
     <section
@@ -74,17 +52,30 @@ export default function Hero() {
     >
       <div className="bg-container bg-[#E8E8E3] w-[100vw] h-[100vh]">
         <nav className="navbar-container text-[#6B645C] h-[70px] flex items-center justify-between px-4 md:px-6 xl:px-8 leading-none overflow-hidden">
-          <p className="text-xl font-normal">Web Developer & Creative Coder</p>
+          <p className="hidden lg:block text-xl font-normal">
+            Web Developer & Creative Coder
+          </p>
+          <p className="block lg:hidden text-xl font-normal">
+            Web Developer & <br />
+            Creative Coder
+          </p>
+
           <div className="hidden lg:flex gap-4">
-            <a className="nav-links font-medium">About</a>
-            <a className="nav-links font-medium">Works</a>
-            <a className="nav-links font-medium">Contact</a>
+            <a href="#about" className="font-medium text-xl">
+              About
+            </a>
+            <a href="#projects" className="font-medium text-xl">
+              Works
+            </a>
+            <a href="#contact" className="font-medium text-xl">
+              Contact
+            </a>
           </div>
         </nav>
-        <div className="name-container relative flex items-center justify-center z-10">
+        <div className="name-container relative flex flex-col items-center justify-center z-10">
           <h1
             ref={headingRef}
-            className="text-[100px] md:text-[120px] lg:text-[150px] xl:text-[200px] leading-none text-[#080807] font-medium mb-4 text-center whitespace-pre"
+            className="text-[110px] md:text-[120px] lg:text-[150px] xl:text-[230px] font-semibold leading-none text-[#080807] mb-0 lg:mb-4 text-center whitespace-pre"
             aria-label="FAZLE RABBI"
           >
             {"FAZLE RABBI".split("").map((ch, i) =>
@@ -114,12 +105,43 @@ export default function Hero() {
               )
             )}
           </h1>
-          {/* <p className="text-2xl">I am a {text}|</p> */}
+          <div className="w-full px-4 md:px-6 lg:px-10 flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-0">
+            <div className="flex-1" id="hero-text-left">
+              <p className="text-xl font-medium text-[#6B645C] w-full lg:max-w-[400px] text-justify">
+                Open to job opportunities worldwide. Passionate about creating
+                visually stunning and user-friendly web experiences that leave a
+                mark.
+              </p>
+              <button className="px-10 py-3 bg-[#6B645C] hover:bg-[#080807] text-[#E8E8E3] text-xl rounded-full mt-4 transition duration-300">
+                Contact
+              </button>
+            </div>
+            <div
+              className="flex-1 w-full flex items-center justify-between lg:justify-end"
+              id="hero-text-right"
+            >
+              <div className="block lg:hidden max-h-full w-[100px] ">
+                <img
+                  src="avatar_b&w.jpg"
+                  alt="avatar"
+                  className=" rounded-2xl object-cover"
+                />
+              </div>
+              <div>
+                <p className="text-lg lg:text-2xl font-medium text-[#6B645C] m-0">
+                  Available for work?
+                </p>
+                <h1 className="text-right text-[60px] lg:text-[100px] font-medium text-[#080807] m-0">
+                  Yes
+                </h1>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden lg:block lg:w-[320px] xl:w-[360px] z-5 overflow-hidden">
           <img
             ref={avatarRef}
-            src="avatar.jpg"
+            src="avatar_b&w.jpg"
             alt="avatar"
             className=" rounded-2xl object-cover"
           />

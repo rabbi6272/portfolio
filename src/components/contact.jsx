@@ -25,6 +25,7 @@ export default function Contact() {
   return (
     <section
       ref={contactRef}
+      id="contact"
       className="contact min-h-screen flex flex-col items-center justify-center px-8"
     >
       <h2 className="text-4xl font-bold mb-6">Contact</h2>
