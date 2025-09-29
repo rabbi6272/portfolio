@@ -3,8 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Hero() {
-  const heroRef = useRef();
+export default function Hero({ heroRef }) {
   const avatarRef = useRef();
   const headingRef = useRef();
 
@@ -45,10 +44,33 @@ export default function Hero() {
     );
   }, []);
 
+  // Fade out the entire Hero while keeping it pinned as the next section scrolls
+  useEffect(() => {
+    if (!heroRef.current) return;
+    const el = heroRef.current;
+
+    const fade = gsap.to(el, {
+      opacity: 0,
+      ease: "none",
+      scrollTrigger: {
+        trigger: el,
+        start: "top top",
+        end: "+=100%", // fade across one viewport height
+        scrub: true,
+        pin: true,
+        pinSpacing: true, // keeps layout space so next section scrolls up
+      },
+    });
+
+    return () => {
+      fade.kill();
+    };
+  }, []);
+
   return (
     <section
       ref={heroRef}
-      className="min-h-screen bg-[#080807] overflow-hidden"
+      className="min-h-screen bg-[#080807] overflow-hidden "
     >
       <div className="bg-container bg-[#E8E8E3] w-[100vw] h-[100vh]">
         <nav className="navbar-container text-[#6B645C] h-[70px] flex items-center justify-between px-4 md:px-6 xl:px-8 leading-none overflow-hidden">
@@ -75,7 +97,7 @@ export default function Hero() {
         <div className="name-container relative flex flex-col items-center justify-center z-10">
           <h1
             ref={headingRef}
-            className="text-[110px] md:text-[120px] lg:text-[150px] xl:text-[230px] font-semibold leading-none text-[#080807] mb-0 lg:mb-4 text-center whitespace-pre"
+            className="hero-heading text-[110px] md:text-[120px] lg:text-[150px] xl:text-[230px] font-semibold leading-[.8] lg:leading-none text-[#080807] mb-0 lg:mb-4 text-center whitespace-pre"
             aria-label="FAZLE RABBI"
           >
             {"FAZLE RABBI".split("").map((ch, i) =>
@@ -107,7 +129,7 @@ export default function Hero() {
           </h1>
           <div className="w-full px-4 md:px-6 lg:px-10 flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-0">
             <div className="flex-1" id="hero-text-left">
-              <p className="text-xl font-medium text-[#6B645C] w-full lg:max-w-[400px] text-justify">
+              <p className="text-xl font-medium text-[#6B645C] w-full md:max-w-[300px] lg:max-w-[350px] text-justify">
                 Open to job opportunities worldwide. Passionate about creating
                 visually stunning and user-friendly web experiences that leave a
                 mark.

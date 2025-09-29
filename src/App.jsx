@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
 import Hero from "./components/hero";
 import About from "./components/about";
@@ -6,6 +6,9 @@ import Projects from "./components/projects";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
 import InfiniteScroll from "./components/infinitescroll";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const items = [
   {
@@ -66,6 +69,8 @@ const items = [
 ];
 
 function App() {
+  const heroRef = useRef();
+  const aboutRef = useRef();
   useEffect(() => {
     const lenis = new Lenis({
       lerp: 0.1,
@@ -77,10 +82,22 @@ function App() {
     }
     requestAnimationFrame(raf);
   });
+
+  useEffect(() => {
+    gsap.to(heroRef.current, {
+      duration: 1,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: aboutRef.current,
+        start: "top 15%",
+      },
+    });
+  }, []);
+
   return (
     <main className="bg-[#080807]">
-      <Hero />
-      <About />
+      <Hero heroRef={heroRef} />
+      <About aboutRef={aboutRef} />
       {/* <Skills /> */}
       <div style={{ height: "100vh", position: "relative" }}>
         <InfiniteScroll

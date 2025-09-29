@@ -10,21 +10,16 @@ import {
 } from "react";
 import { gsap } from "gsap";
 
-export default function About() {
+export default function About({ aboutRef }) {
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center justify-center text-5xl text-[#E8E8E3] px-8"
+      ref={aboutRef}
+      className="min-h-screen flex flex-col lg:flex-row gap-2 items-center justify-center text-5xl font-medium text-[#E8E8E3] px-8"
     >
       I am a{" "}
       <RotatingText
-        texts={[
-          "Developer",
-          "Designer",
-          "Creative Coder",
-          "React Enthusiast",
-          "UG Student",
-        ]}
+        texts={["UG Student", "Developer", "Creative Coder", "Designer"]}
       />
     </section>
   );
@@ -41,8 +36,8 @@ const RotatingText = forwardRef((props, ref) => {
     initial = { y: "100%", opacity: 0 },
     animate = { y: 0, opacity: 1 },
     exit = { y: "-120%", opacity: 0 },
-    rotationInterval = 2000,
-    staggerDuration = 0,
+    rotationInterval = 1500,
+    staggerDuration = 0.02,
     staggerFrom = "first",
     loop = true,
     auto = true,
