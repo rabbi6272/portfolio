@@ -55,7 +55,7 @@ export default function Hero({ heroRef }) {
       scrollTrigger: {
         trigger: el,
         start: "top top",
-        end: "+=100%", // fade across one viewport height
+        end: "+=30%", // fade across one viewport height
         scrub: true,
         pin: true,
         pinSpacing: true, // keeps layout space so next section scrolls up
@@ -70,7 +70,7 @@ export default function Hero({ heroRef }) {
   return (
     <section
       ref={heroRef}
-      className="min-h-screen bg-[#080807] overflow-hidden "
+      className="h-screen border bg-[#080807] overflow-hidden"
     >
       <div className="bg-container bg-[#E8E8E3] w-[100vw] h-[100vh]">
         <nav className="navbar-container text-[#6B645C] h-[70px] flex items-center justify-between px-4 md:px-6 xl:px-8 leading-none overflow-hidden">
@@ -129,7 +129,7 @@ export default function Hero({ heroRef }) {
           </h1>
           <div className="w-full px-4 md:px-6 lg:px-10 flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-0">
             <div className="flex-1" id="hero-text-left">
-              <p className="text-xl font-medium text-[#6B645C] w-full md:max-w-[300px] lg:max-w-[350px] text-justify">
+              <p className="text-lg lg:text-xl font-normal lg:font-medium text-[#6B645C] w-full md:max-w-[300px] lg:max-w-[350px] text-justify">
                 Open to job opportunities worldwide. Passionate about creating
                 visually stunning and user-friendly web experiences that leave a
                 mark.
@@ -150,7 +150,7 @@ export default function Hero({ heroRef }) {
                 />
               </div>
               <div>
-                <p className="text-lg lg:text-2xl font-medium text-[#6B645C] m-0">
+                <p className="text-lg lg:text-2xl font-normal lg:font-medium text-[#6B645C] m-0">
                   Available for work?
                 </p>
                 <h1 className="text-right text-[60px] lg:text-[100px] font-medium text-[#080807] m-0">

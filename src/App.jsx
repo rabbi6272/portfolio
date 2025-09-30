@@ -83,23 +83,15 @@ function App() {
     requestAnimationFrame(raf);
   });
 
-  useEffect(() => {
-    gsap.to(heroRef.current, {
-      duration: 1,
-      opacity: 0,
-      scrollTrigger: {
-        trigger: aboutRef.current,
-        start: "top 15%",
-      },
-    });
-  }, []);
-
   return (
     <main className="bg-[#080807]">
       <Hero heroRef={heroRef} />
       <About aboutRef={aboutRef} />
       {/* <Skills /> */}
       <div style={{ height: "100vh", position: "relative" }}>
+        <h1 className="text-6xl font-bold my-4 text-center text-gray-300">
+          My Skills
+        </h1>{" "}
         <InfiniteScroll
           items={items}
           width="400px"

@@ -63,11 +63,13 @@ export default function Projects() {
 
   return (
     <>
-      <h1 className="text-6xl font-bold my-6 text-center">My Works</h1>
+      <h1 className="text-6xl font-bold mt-20 text-center text-white">
+        My Works
+      </h1>
       <section
         ref={wrapperRef}
         className="wrapper text-white overflow-hidden"
-        id="projects  "
+        id="projects"
       >
         {/* wrapper is trigger */}
         <div

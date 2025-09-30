@@ -9,18 +9,222 @@ import {
   useState,
 } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 export default function About({ aboutRef }) {
+  // Staggered reveal + counters on scroll
+  useEffect(() => {
+    const section = aboutRef?.current;
+    if (!section) return;
+
+    const revealEls = section.querySelectorAll(".about-stagger");
+    gsap.set(revealEls, { y: 24, opacity: 0 });
+    gsap.to(revealEls, {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      ease: "power3.out",
+      stagger: 0.12,
+      scrollTrigger: {
+        trigger: section,
+        start: "top 75%",
+        once: true,
+      },
+    });
+
+    // Counters
+    const counters = section.querySelectorAll("[data-counter]");
+    counters.forEach((el) => {
+      const end = parseInt(el.getAttribute("data-counter") || "0", 10);
+      const obj = { val: 0 };
+      gsap.to(obj, {
+        val: end,
+        duration: 1.2,
+        ease: "power1.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          once: true,
+        },
+        onUpdate: () => {
+          el.textContent = Math.round(obj.val).toString();
+        },
+      });
+    });
+  }, [aboutRef]);
+
   return (
     <section
       id="about"
       ref={aboutRef}
-      className="min-h-screen flex flex-col lg:flex-row gap-2 items-center justify-center text-5xl font-medium text-[#E8E8E3] px-8"
+      className="relative min-h-screen bg-[#0B0B0A] text-[#E8E8E3] px-6 md:px-10 py-24 flex items-center"
     >
-      I am a{" "}
-      <RotatingText
-        texts={["UG Student", "Developer", "Creative Coder", "Designer"]}
-      />
+      {/* Decorative background blobs */}
+      <div className="pointer-events-none absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-purple-600/20 to-blue-500/10 blur-3xl rounded-full" />
+      <div className="pointer-events-none absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tr from-emerald-500/10 to-cyan-500/10 blur-3xl rounded-full" />
+
+      <div className="relative mx-auto w-full max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
+        {/* Left column */}
+        <div>
+          {/* <p className="about-stagger inline-flex items-center gap-2 text-xs tracking-widest uppercase text-emerald-300/80 mb-4">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> UG CSE
+            · RUET
+          </p> */}
+          <h2 className="about-stagger text-4xl md:text-6xl font-bold leading-tight text-[#EDEDE8]">
+            Undergraduate CSE Student at RUET
+          </h2>
+          <p className="about-stagger mt-4 text-base md:text-lg text-[#B9B9B1] max-w-prose">
+            I’m Fazle Rabbi, an undergraduate in Computer Science & Engineering
+            at
+            <span className="font-semibold text-[#EDEDE8]"> RUET</span>. I love
+            building fast, accessible web experiences with React, Tailwind, and
+            GSAP—especially micro-interactions and motion that bring interfaces
+            to life.
+          </p>
+
+          <div className="about-stagger mt-6 text-2xl md:text-3xl font-semibold">
+            I am a{" "}
+            <RotatingText
+              texts={[
+                "UG CSE @ RUET",
+                "Developer",
+                "Creative Coder",
+                "Tech Enthusiast",
+              ]}
+              splitBy="characters"
+            />
+          </div>
+
+          {/* Chips */}
+          {/* <div className="about-stagger mt-6 flex flex-wrap gap-2">
+            {[
+              "React",
+              "GSAP",
+              "Tailwind",
+              "UI Animation",
+              "Algorithms",
+              "Open Source",
+            ].map((chip) => (
+              <span
+                key={chip}
+                className="px-3 py-1 rounded-full text-sm bg-white/5 border border-white/10 text-[#D9D9D2] backdrop-blur"
+              >
+                {chip}
+              </span>
+            ))}
+          </div> */}
+
+          {/* CTAs */}
+          <div className="about-stagger mt-8 flex gap-3">
+            <a
+              href="#projects"
+              className="px-5 py-2.5 rounded-lg bg-emerald-500 text-[#0A0A09] font-semibold hover:bg-emerald-400 transition-colors"
+            >
+              View Projects
+            </a>
+            <a
+              href="#contact"
+              className="px-5 py-2.5 rounded-lg border border-white/10 text-[#EDEDE8] hover:border-white/30 transition-colors"
+            >
+              Contact Me
+            </a>
+          </div>
+        </div>
+
+        {/* Right column */}
+        <div className="grid gap-6">
+          {/* Education - Timeline */}
+          <div className="about-stagger rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+            <h3 className="text-xl font-bold text-[#EDEDE8]">Education</h3>
+
+            <div className="about-timeline relative mt-5 pl-6">
+              {/* Vertical bar we can animate */}
+              <span className="timeline-bar absolute left-2 top-0 w-[2px] h-full bg-gradient-to-b from-gray-400 to-gray-700 origin-top" />
+
+              <ol className="space-y-6">
+                <li className="timeline-item relative">
+                  <span className="absolute -left-[9px] top-1 w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-emerald-400/20" />
+                  <time className="pl-2 block text-xs uppercase tracking-wide text-[#AFAFA8]">
+                    2025 — Present
+                  </time>
+                  <p className="text-sm text-[#C9C9C1]">B.Sc. in CSE — RUET</p>
+                  <p className=" text-[#AFAFA8] font-medium">
+                    Rajshahi University of Engineering & Technology
+                  </p>
+                </li>
+
+                <li className="timeline-item relative">
+                  <span className="absolute -left-[9px] top-1 w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-emerald-400/20" />
+                  <time className="pl-2 block text-xs uppercase tracking-wide text-[#AFAFA8]">
+                    2024
+                  </time>
+                  <p className="text-[#C9C9C1] text-sm">
+                    HSC — Higher Secondary Certificate
+                  </p>
+                  <p className="text-[#C9C9C1] font-medium">
+                    Govt. Sundarban Adarsha College, Khulna
+                  </p>
+                </li>
+
+                <li className="timeline-item relative">
+                  {/* Dot */}
+                  <span className="absolute -left-[9px] top-1 w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-emerald-400/20" />
+                  <time className="pl-2 block text-xs uppercase tracking-wide text-[#AFAFA8]">
+                    2022
+                  </time>
+                  <p className="text-[#C9C9C1] text-sm">
+                    SSC — Secondary School Certificate
+                  </p>
+                  <p className="text-[#C9C9C1] font-medium">
+                    Paikgacha Govt High School, Khulna
+                  </p>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          {/* Current Focus */}
+          <div className="about-stagger rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+            <h3 className="text-xl font-bold text-[#EDEDE8]">Current Focus</h3>
+            <ul className="mt-2 space-y-1 text-[#C9C9C1] list-disc list-inside">
+              <li>Advanced Programming Concepts</li>
+              <li>Full-Stack Web Development</li>
+              <li>Learning through Open Source</li>
+            </ul>
+          </div>
+
+          {/* Stats */}
+          {/* <div className="about-stagger rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+            <div className="grid grid-cols-3 gap-4 text-center">
+              <div>
+                <div className="text-3xl font-extrabold text-[#EDEDE8]">
+                  <span data-counter="12">0</span>
+                </div>
+                <p className="text-xs uppercase tracking-wide text-[#AFAFA8] mt-1">
+                  Projects
+                </p>
+              </div>
+              <div>
+                <div className="text-3xl font-extrabold text-[#EDEDE8]">
+                  <span data-counter="25">0</span>
+                </div>
+                <p className="text-xs uppercase tracking-wide text-[#AFAFA8] mt-1">
+                  UI Animations
+                </p>
+              </div>
+              <div>
+                <div className="text-3xl font-extrabold text-[#EDEDE8]">
+                  <span data-counter="3">0</span>
+                </div>
+                <p className="text-xs uppercase tracking-wide text-[#AFAFA8] mt-1">
+                  Hackathons
+                </p>
+              </div>
+            </div>
+          </div> */}
+        </div>
+      </div>
     </section>
   );
 }

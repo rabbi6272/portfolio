@@ -28,7 +28,7 @@ export default function Contact() {
       id="contact"
       className="contact min-h-screen flex flex-col items-center justify-center px-8"
     >
-      <h2 className="text-4xl font-bold mb-6">Contact</h2>
+      <h2 className="text-4xl font-bold mb-6 text-gray-300">Contact Me</h2>
       <form className="w-full max-w-md flex flex-col gap-4 ">
         <input
           type="text"
