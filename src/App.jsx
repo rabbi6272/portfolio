@@ -69,8 +69,6 @@ const items = [
 ];
 
 function App() {
-  const heroRef = useRef();
-  const aboutRef = useRef();
   useEffect(() => {
     const lenis = new Lenis({
       lerp: 0.1,
@@ -85,8 +83,8 @@ function App() {
 
   return (
     <main className="bg-[#080807]">
-      <Hero heroRef={heroRef} />
-      <About aboutRef={aboutRef} />
+      <Hero />
+      <About />
       {/* <Skills /> */}
       <div style={{ height: "100vh", position: "relative" }}>
         <h1 className="text-6xl font-bold my-4 text-center text-gray-300">

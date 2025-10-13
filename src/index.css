@@ -63,14 +63,14 @@ h6 {
 }
 
 .bg-container {
-  border-radius: 100%;
+  /* border-radius: 100%; */
   transform: translateY(-100%);
   animation: slideIn 1.5s forwards;
 }
 @keyframes slideIn {
   to {
     transform: translateY(0);
-    border-radius: 0;
+    /* border-radius: 0; */
   }
 }
 

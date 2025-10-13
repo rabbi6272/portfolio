@@ -1,11 +1,13 @@
 import { useEffect, useRef } from "react";
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Hero({ heroRef }) {
+export default function Hero() {
   const avatarRef = useRef();
   const headingRef = useRef();
+  const heroRef = useRef();
 
   useEffect(() => {
     if (!headingRef.current) return;
@@ -20,7 +22,7 @@ export default function Hero({ heroRef }) {
       return;
     }
 
-    const tl = gsap.timeline({ delay: 1 });
+    const tl = gsap.timeline({ delay: 1.5 });
     tl.fromTo(
       chars,
       { y: "1.1em", opacity: 0, willChange: "transform" },
@@ -55,7 +57,7 @@ export default function Hero({ heroRef }) {
       scrollTrigger: {
         trigger: el,
         start: "top top",
-        end: "+=30%", // fade across one viewport height
+        end: "+=20%", // fade out 20% before next section
         scrub: true,
         pin: true,
         pinSpacing: true, // keeps layout space so next section scrolls up

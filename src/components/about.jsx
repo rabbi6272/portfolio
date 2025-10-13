@@ -12,7 +12,9 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-export default function About({ aboutRef }) {
+export default function About() {
+  const aboutRef = useRef();
+
   // Staggered reveal + counters on scroll
   useEffect(() => {
     const section = aboutRef?.current;
