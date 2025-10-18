@@ -9,26 +9,31 @@ const projects = [
     title: "Ruet CSE Archive",
     desc: "A website for the CSE department.",
     image: "/projects/csearchive.png",
+    link: "https://ruetcsearchive.app/",
   },
   {
     title: "Shoppify App",
     desc: "A modern shopping platform.",
     image: "/projects/shoppify.png",
+    link: "https://next-shoppify.vercel.app/",
   },
   {
     title: "MovieHub App",
     desc: "Browse and save your favorite movies.",
     image: "/projects/movieshub.png",
+    link: "https://next-movieshub.vercel.app/",
   },
   {
     title: "Todo App",
     desc: "Personal task manager.",
     image: "/projects/todolist.png",
+    link: "https://next-to-do-list-self.vercel.app/",
   },
   {
     title: "Guess Game",
     desc: "A game to guess the number.",
     image: "/projects/guessgame.png",
+    link: "https://the-guess-game.vercel.app/",
   },
 ];
 
@@ -91,7 +96,7 @@ export default function Projects() {
                 />
                 <div className="w-full flex flex-col items-center p-4 md:p-6 lg:p-8">
                   <h3 className="text-3xl font-bold font-sans mb-2">
-                    {proj.title}
+                    <a href={proj.link}>{proj.title}</a>
                   </h3>
                   <p className="max-w-md">{proj.desc}</p>
                 </div>
