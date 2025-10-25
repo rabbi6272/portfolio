@@ -6,7 +6,6 @@ import Skills from "./components/skills";
 import Projects from "./components/projects";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
-import InfiniteScroll from "./components/infinitescroll";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
