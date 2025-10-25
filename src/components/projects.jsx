@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
 
+gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
@@ -40,7 +42,35 @@ const projects = [
 export default function Projects() {
   const containerRef = useRef();
   const wrapperRef = useRef();
+  const textRef = useRef();
+  const textContainerRef = useRef();
 
+  // Scroll text reveal
+  useEffect(() => {
+    if (!textRef.current) return;
+
+    let split = SplitText.create(textRef.current, {
+      type: "chars",
+    });
+    gsap.from(split.chars, {
+      y: -70,
+      duration: 0.5,
+      ease: "linear",
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: textContainerRef.current,
+        start: "top 50%",
+        end: "top top",
+        once: true,
+        scrub: true,
+      },
+    });
+    return () => {
+      split.revert();
+    };
+  }, []);
+
+  // Horizontal Scroll
   useEffect(() => {
     const el = containerRef.current;
 
@@ -67,15 +97,15 @@ export default function Projects() {
   }, []);
 
   return (
-    <>
-      <h1 className="text-6xl font-medium mt-20 text-center text-white">
-        My Works
-      </h1>
-      <section
-        ref={wrapperRef}
-        className="wrapper text-white overflow-hidden"
-        id="projects"
+    <section id="projects" ref={textContainerRef} className="text-gray-100">
+      <h1
+        ref={textRef}
+        className="text-5xl md:text-7xl text-[#EDEDE8] font-medium leading-[0.9] overflow-hidden mb-12 text-center "
       >
+        My works
+      </h1>
+
+      <div ref={wrapperRef} className="wrapper overflow-hidden">
         {/* wrapper is trigger */}
         <div
           ref={containerRef}
@@ -104,7 +134,7 @@ export default function Projects() {
             </div>
           ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

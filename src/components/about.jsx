@@ -69,20 +69,14 @@ export default function About() {
       <div className="relative mx-auto w-full max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
         {/* Left column */}
         <div>
-          {/* <p className="about-stagger inline-flex items-center gap-2 text-xs tracking-widest uppercase text-emerald-300/80 mb-4">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> UG CSE
-            · RUET
-          </p> */}
           <h2 className="about-stagger text-4xl md:text-6xl font-semibold leading-tight text-[#EDEDE8]">
             Undergraduate CSE Student at RUET
           </h2>
           <p className="about-stagger mt-4 text-base md:text-lg text-[#B9B9B1] max-w-prose">
-            I’m Fazle Rabbi, an undergraduate in Computer Science & Engineering
-            at
-            <span className="font-semibold text-[#EDEDE8]"> RUET</span>. I love
-            building fast, accessible web experiences with React, Tailwind, and
-            GSAP—especially micro-interactions and motion that bring interfaces
-            to life.
+            I’m <span className="font-semibold text-white">Fazle Rabbi</span>, a
+            full-stack developer from Bangladesh. I love building fast,
+            accessible web experiences with React, Tailwind, and GSAP—especially
+            micro-interactions and motion that bring interfaces to life.
           </p>
 
           <div className="about-stagger mt-6 text-2xl md:text-3xl font-medium">
@@ -138,11 +132,11 @@ export default function About() {
         <div className="grid gap-6">
           {/* Education - Timeline */}
           <div className="about-stagger rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
-            <h3 className="text-xl font-medium text-[#EDEDE8]">Education</h3>
+            <h3 className="text-2xl font-medium text-[#EDEDE8]">Education</h3>
 
             <div className="about-timeline relative mt-5 pl-6">
               {/* Vertical bar we can animate */}
-              <span className="timeline-bar absolute left-2 top-0 w-[2px] h-full bg-gradient-to-b from-gray-400 to-gray-700 origin-top" />
+              <span className="timeline-bar absolute left-2 top-0 w-[2px] h-[85%] rounded-full bg-gradient-to-b from-gray-400 to-gray-700 origin-top" />
 
               <ol className="space-y-6">
                 <li className="timeline-item relative">
@@ -150,7 +144,7 @@ export default function About() {
                   <time className="pl-2 block text-xs uppercase tracking-wide text-[#AFAFA8]">
                     2025 — Present
                   </time>
-                  <p className="text-sm text-[#C9C9C1]">B.Sc. in CSE — RUET</p>
+                  <p className="text-sm text-[#C9C9C1]">B.Sc. in CSE</p>
                   <p className=" text-[#AFAFA8] font-medium">
                     Rajshahi University of Engineering & Technology
                   </p>
@@ -188,7 +182,7 @@ export default function About() {
 
           {/* Current Focus */}
           <div className="about-stagger rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
-            <h3 className="text-xl font-medium text-[#EDEDE8]">
+            <h3 className="text-2xl font-medium text-[#EDEDE8]">
               Current Focus
             </h3>
             <ul className="mt-2 space-y-1 text-[#C9C9C1] list-disc list-inside">
@@ -240,12 +234,12 @@ function cn(...classes) {
 const RotatingText = forwardRef((props, ref) => {
   const {
     texts,
-    transition = { type: "spring", damping: 25, stiffness: 300 },
+    transition = { type: "spring", damping: 25, stiffness: 200 },
     initial = { y: "100%", opacity: 0 },
     animate = { y: 0, opacity: 1 },
     exit = { y: "-120%", opacity: 0 },
     rotationInterval = 1500,
-    staggerDuration = 0.02,
+    staggerDuration = 0.025,
     staggerFrom = "first",
     loop = true,
     auto = true,

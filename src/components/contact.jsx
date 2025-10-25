@@ -1,12 +1,41 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(SplitText);
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
-  const contactRef = useRef();
+  const textRef = useRef();
+  const textContainerRef = useRef();
+  useEffect(() => {
+    if (!textRef.current) return;
+
+    let split = SplitText.create(textRef.current, {
+      type: "chars",
+    });
+    gsap.from(split.chars, {
+      y: -70,
+      duration: 0.5,
+      ease: "linear",
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: textContainerRef.current,
+        start: "top 50%",
+        end: "top top",
+        once: true,
+        scrub: true,
+      },
+    });
+    return () => {
+      split.revert();
+    };
+  }, []);
 
   useEffect(() => {
     gsap.fromTo(
-      contactRef.current.querySelectorAll("input, textarea, button"),
+      textContainerRef.current.querySelectorAll("input, textarea, button"),
       { opacity: 0, scale: 0 },
       {
         opacity: 1,
@@ -15,7 +44,7 @@ export default function Contact() {
         duration: 1.5,
         ease: "back.out",
         scrollTrigger: {
-          trigger: contactRef.current,
+          trigger: textContainerRef.current,
           start: "top 15%",
         },
       }
@@ -24,34 +53,85 @@ export default function Contact() {
 
   return (
     <section
-      ref={contactRef}
+      ref={textContainerRef}
       id="contact"
-      className="contact min-h-screen flex flex-col items-center justify-center px-8"
+      className="contact h-screen flex flex-col items-center justify-center px-8"
     >
-      <h2 className="text-4xl font-bold mb-6 text-gray-300">Contact Me</h2>
-      <form className="w-full max-w-md flex flex-col gap-4 ">
+      <h3
+        ref={textRef}
+        className="text-5xl md:text-7xl text-[#EDEDE8] font-medium leading-[0.9] overflow-hidden mb-12"
+      >
+        Contact me
+      </h3>
+
+      <p className="text-center text-[#B9B9B1] text-lg md:text-xl max-w-2xl mb-8">
+        Got a project in mind or just want to chat about web development? I'm
+        always open to discussing new opportunities, collaborations, or simply
+        connecting with fellow developers.
+      </p>
+
+      <form className="w-full max-w-md flex flex-col gap-4">
         <input
           type="text"
-          placeholder="Name"
-          className="p-3 rounded bg-gray-800 outline-none placeholder:text-gray-300 *:"
+          placeholder="Your Name"
+          required
+          className="p-4 rounded-lg bg-gray-800 text-[#EDEDE8] outline-none focus:ring-2 focus:ring-blue-500 transition placeholder:text-gray-400"
         />
         <input
           type="email"
-          placeholder="Email"
-          className="p-3 rounded bg-gray-800 outline-none placeholder:text-gray-300 *:"
+          placeholder="Your Email"
+          required
+          className="p-4 rounded-lg bg-gray-800 text-[#EDEDE8] outline-none focus:ring-2 focus:ring-blue-500 transition placeholder:text-gray-400"
         />
         <textarea
-          rows="4"
-          placeholder="Message"
-          className="p-3 rounded bg-gray-800 outline-none placeholder:text-gray-300 *:"
+          rows="5"
+          placeholder="Your Message"
+          required
+          className="p-4 rounded-lg bg-gray-800 text-[#EDEDE8] outline-none focus:ring-2 focus:ring-blue-500 transition placeholder:text-gray-400 resize-none"
         />
         <button
           type="submit"
-          className="text-white bg-blue-500 hover:bg-blue-600 py-2 rounded font-semibold"
+          className="text-[#EDEDE8] bg-blue-600 hover:bg-blue-700 py-3 px-6 rounded-lg font-semibold transition duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
         >
-          Send
+          Send Message
         </button>
       </form>
+
+      <div className="mt-12 flex flex-col items-center gap-4">
+        <p className="text-[#B9B9B1] text-sm">Or reach out directly</p>
+        <div className="flex gap-6 text-[#EDEDE8]">
+          <a
+            href="https://facebook.com/frabbi6272"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-blue-500 transition duration-300 text-lg"
+          >
+            Facebook
+          </a>
+          <a
+            href="mailto:mmrabbi625442@gmail.com" // Replace with your email.email@google.com"
+            className="hover:text-blue-500 transition duration-300 text-lg"
+          >
+            Email
+          </a>
+          <a
+            href="https://github.com/rabbi6272"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-blue-500 transition duration-300 text-lg"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/fazle-rabbi-b48a722a2/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-blue-500 transition duration-300 text-lg"
+          >
+            LinkedIn
+          </a>
+        </div>
+      </div>
     </section>
   );
 }

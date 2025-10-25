@@ -75,6 +75,7 @@ export default function Hero() {
       className="h-screen border bg-[#080807] overflow-hidden"
     >
       <div className="bg-container bg-[#E8E8E3] w-[100vw] h-[100vh]">
+        {/* Navigation bar */}
         <nav className="navbar-container text-[#6B645C] h-[70px] flex items-center justify-between px-4 md:px-6 xl:px-8 leading-none overflow-hidden">
           <p className="hidden lg:block text-xl font-normal">
             Web Developer & Creative Coder
@@ -96,6 +97,8 @@ export default function Hero() {
             </a>
           </div>
         </nav>
+
+        {/* Main body content */}
         <div className="name-container relative flex flex-col items-center justify-center z-10">
           <h1
             ref={headingRef}
@@ -104,19 +107,16 @@ export default function Hero() {
           >
             {"FAZLE RABBI".split("").map((ch, i) =>
               ch === " " ? (
-                <>
+                <span key={i} className="space-wrapper">
                   {/* Mobile: break line */}
-                  <br key={`br-${i}`} className="block sm:hidden" />
+                  <br className="block sm:hidden" />
                   {/* Desktop/tablet: show non-breaking space but keep char structure for animation (hidden on mobile) */}
-                  <span
-                    key={`space-${i}`}
-                    className="char-wrapper hidden sm:inline overflow-hidden align-baseline"
-                  >
+                  <span className="char-wrapper hidden sm:inline overflow-hidden align-baseline">
                     <span className="char-inner inline-block will-change-transform">
                       {"\u00A0"}
                     </span>
                   </span>
-                </>
+                </span>
               ) : (
                 <span
                   key={i}
@@ -162,6 +162,8 @@ export default function Hero() {
             </div>
           </div>
         </div>
+
+        {/* Full Avatar in background */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden lg:block lg:w-[320px] xl:w-[360px] z-5 overflow-hidden">
           <img
             ref={avatarRef}

@@ -1,3 +1,10 @@
+import { useEffect, useRef } from "react";
+
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+gsap.registerPlugin(SplitText);
+gsap.registerPlugin(ScrollTrigger);
 const skills = [
   {
     name: "React",
@@ -57,9 +64,43 @@ const skills = [
 ];
 
 export default function Skills() {
+  const textRef = useRef();
+  const textContainerRef = useRef();
+  useEffect(() => {
+    if (!textRef.current) return;
+
+    let split = SplitText.create(textRef.current, {
+      type: "chars",
+    });
+    gsap.from(split.chars, {
+      y: -70,
+      duration: 0.5,
+      ease: "linear",
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: textContainerRef.current,
+        start: "top 50%",
+        end: "top top",
+        once: true,
+        scrub: true,
+      },
+    });
+    return () => {
+      split.revert();
+    };
+  }, []);
+
   return (
-    <section className="min-h-screen px-1 flex flex-col items-center justify-center bg-gray-900 text-white overflow-hidden">
-      <h2 className="text-5xl md:text-6xl font-medium mb-12">Skills</h2>
+    <section
+      ref={textContainerRef}
+      className="min-h-screen px-1 flex flex-col items-center justify-center text-gray-100 overflow-hidden"
+    >
+      <h3
+        ref={textRef}
+        className="text-5xl md:text-7xl text-[#EDEDE8] font-medium leading-[0.9] overflow-hidden mb-12"
+      >
+        Skills
+      </h3>
 
       {/* Infinite scroll container */}
       <div className="w-full md:w-[90%] lg:w-[80%] overflow-hidden mask-gradient">
