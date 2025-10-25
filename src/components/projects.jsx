@@ -68,7 +68,7 @@ export default function Projects() {
 
   return (
     <>
-      <h1 className="text-6xl font-bold mt-20 text-center text-white">
+      <h1 className="text-6xl font-medium mt-20 text-center text-white">
         My Works
       </h1>
       <section
@@ -95,7 +95,7 @@ export default function Projects() {
                   className="aspect-[4/3] w-full p-2 object-cover object-top overflow-hidden rounded-xl"
                 />
                 <div className="w-full flex flex-col items-center p-4 md:p-6 lg:p-8">
-                  <h3 className="text-3xl font-bold font-sans mb-2">
+                  <h3 className="text-3xl font-medium font-sans mb-2">
                     <a href={proj.link}>{proj.title}</a>
                   </h3>
                   <p className="max-w-md">{proj.desc}</p>

@@ -73,7 +73,7 @@ export default function About() {
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> UG CSE
             · RUET
           </p> */}
-          <h2 className="about-stagger text-4xl md:text-6xl font-bold leading-tight text-[#EDEDE8]">
+          <h2 className="about-stagger text-4xl md:text-6xl font-semibold leading-tight text-[#EDEDE8]">
             Undergraduate CSE Student at RUET
           </h2>
           <p className="about-stagger mt-4 text-base md:text-lg text-[#B9B9B1] max-w-prose">
@@ -85,7 +85,7 @@ export default function About() {
             to life.
           </p>
 
-          <div className="about-stagger mt-6 text-2xl md:text-3xl font-semibold">
+          <div className="about-stagger mt-6 text-2xl md:text-3xl font-medium">
             I am a{" "}
             <RotatingText
               texts={[
@@ -138,7 +138,7 @@ export default function About() {
         <div className="grid gap-6">
           {/* Education - Timeline */}
           <div className="about-stagger rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
-            <h3 className="text-xl font-bold text-[#EDEDE8]">Education</h3>
+            <h3 className="text-xl font-medium text-[#EDEDE8]">Education</h3>
 
             <div className="about-timeline relative mt-5 pl-6">
               {/* Vertical bar we can animate */}
@@ -188,7 +188,9 @@ export default function About() {
 
           {/* Current Focus */}
           <div className="about-stagger rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
-            <h3 className="text-xl font-bold text-[#EDEDE8]">Current Focus</h3>
+            <h3 className="text-xl font-medium text-[#EDEDE8]">
+              Current Focus
+            </h3>
             <ul className="mt-2 space-y-1 text-[#C9C9C1] list-disc list-inside">
               <li>Advanced Programming Concepts</li>
               <li>Full-Stack Web Development</li>

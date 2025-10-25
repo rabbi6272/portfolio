@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
 import Hero from "./components/hero";
 import About from "./components/about";
+import Skills from "./components/skills";
 import Projects from "./components/projects";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
@@ -85,21 +86,7 @@ function App() {
     <main className="bg-[#080807]">
       <Hero />
       <About />
-      {/* <Skills /> */}
-      <div style={{ height: "100vh", position: "relative" }}>
-        <h1 className="text-6xl font-bold my-4 text-center text-gray-300">
-          My Skills
-        </h1>{" "}
-        <InfiniteScroll
-          items={items}
-          width="400px"
-          isTilted={true}
-          tiltDirection="left"
-          autoplay={true}
-          autoplayDirection="up"
-          pauseOnHover={false}
-        />
-      </div>
+      <Skills />
       <Projects />
       <Contact />
       <Footer />
