@@ -9,31 +9,31 @@ gsap.registerPlugin(ScrollTrigger);
 const projects = [
   {
     title: "Ruet CSE Archive",
-    desc: "A website for the CSE department.",
+    desc: "A versatile archival portal for RUET CSE—centralizes course notes, events, and alumni resources. Built with Next.js and Tailwind, it features responsive design, client-side search, and serverless endpoints for content management.",
     image: "/projects/csearchive.png",
     link: "https://ruetcsearchive.app/",
   },
   {
     title: "Shoppify App",
-    desc: "A modern shopping platform.",
+    desc: "A modern e-commerce storefront with product browsing, cart and checkout flows. Implemented using Next.js and Tailwind, with Stripe-ready payment hooks and performance optimizations for fast UX.",
     image: "/projects/shoppify.png",
     link: "https://next-shoppify.vercel.app/",
   },
   {
     title: "MovieHub App",
-    desc: "Browse and save your favorite movies.",
+    desc: "Movie discovery app that lets users browse, search and save favorites. Integrates a public movie API, client-side caching and responsive image loading to deliver a smooth, mobile-first experience.",
     image: "/projects/movieshub.png",
     link: "https://next-movieshub.vercel.app/",
   },
   {
     title: "Todo App",
-    desc: "Personal task manager.",
+    desc: "A focused task manager with create/read/update/delete, filtering and local persistence. Demonstrates solid state management patterns and accessible, responsive UI components.",
     image: "/projects/todolist.png",
     link: "https://next-to-do-list-self.vercel.app/",
   },
   {
     title: "Guess Game",
-    desc: "A game to guess the number.",
+    desc: "An interactive number-guessing game showcasing game logic, stateful UI and score tracking. Lightweight and accessible, built for quick play across devices.",
     image: "/projects/guessgame.png",
     link: "https://the-guess-game.vercel.app/",
   },
@@ -118,17 +118,19 @@ export default function Projects() {
               key={i}
               className="project-card h-screen w-screen flex-shrink-0 grid place-items-center"
             >
-              <div className="w-[95vw] md:w-[70vw] h-[50vh] md:h-[70vh] xl:h-[90vh] bg-gray-900 border border-gray-700 rounded-lg flex flex-col items-center justify-center ">
+              <div className="w-[95vw] md:w-[85vw] xl:w-[80vw] h-[70vh] md:h-[80vh] xl:h-[90vh] bg-gray-900 border border-gray-700 rounded-lg flex flex-col items-center justify-center p-2">
                 <img
                   src={proj.image}
                   alt={proj.title}
-                  className="aspect-[4/3] w-full p-2 object-cover object-top overflow-hidden rounded-xl"
+                  className="aspect-[4/3] w-full object-cover object-top overflow-hidden rounded"
                 />
                 <div className="w-full flex flex-col items-center p-4 md:p-6 lg:p-8">
-                  <h3 className="text-3xl font-medium font-sans mb-2">
+                  <h2 className="text-4xl font-medium font-sans mb-2">
                     <a href={proj.link}>{proj.title}</a>
-                  </h3>
-                  <p className="max-w-md">{proj.desc}</p>
+                  </h2>
+                  <p className="max-w-full md:max-w-[80%] xl:max-w-[60%] text-gray-300 text-justify">
+                    {proj.desc}
+                  </p>
                 </div>
               </div>
             </div>

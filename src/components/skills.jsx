@@ -92,6 +92,7 @@ export default function Skills() {
 
   return (
     <section
+      id="skills"
       ref={textContainerRef}
       className="min-h-screen px-1 flex flex-col items-center justify-center text-gray-100 overflow-hidden"
     >
@@ -103,7 +104,7 @@ export default function Skills() {
       </h3>
 
       {/* Infinite scroll container */}
-      <div className="w-full md:w-[90%] lg:w-[80%] overflow-hidden mask-gradient">
+      <div className="w-full md:w-[90%] overflow-hidden mask-gradient">
         <div className="skill-section flex gap-8 w-max text-gray-300 text-lg md:text-md font-normal">
           {/* First set of skills */}
           {skills.map((skill, i) => (

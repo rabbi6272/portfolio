@@ -102,7 +102,7 @@ export default function Hero() {
         <div className="name-container relative flex flex-col items-center justify-center z-10">
           <h1
             ref={headingRef}
-            className="hero-name text-[110px] md:text-[120px] lg:text-[150px] xl:text-[230px] font-semibold leading-[.8] lg:leading-none text-[#080807] mb-0 lg:mb-4 text-center whitespace-pre"
+            className="hero-name text-[120px] md:text-[140px] lg:text-[160px] xl:text-[240px] font-semibold leading-[.8] lg:leading-none text-[#080807] mb-0 lg:mb-4 text-center whitespace-pre"
             aria-label="FAZLE RABBI"
           >
             {"FAZLE RABBI".split("").map((ch, i) =>

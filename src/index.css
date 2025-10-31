@@ -30,7 +30,8 @@ h6 {
   font-style: italic;
 }
 .hero-name {
-  font-family: "Chillax", Poppins, Helvetica, Arial, sans-serif;
+  font-family: "Alpino", Poppins, Helvetica, Arial, sans-serif;
+  font-weight: 800;
 }
 ::-webkit-scrollbar {
   width: 0px;
@@ -150,17 +151,23 @@ h6 {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 100px;
+  width: 150px;
   z-index: 10;
   pointer-events: none;
 }
 
 .mask-gradient::before {
   left: 0;
-  background: linear-gradient(to right, #111827, transparent);
+  background: linear-gradient(to right, #000, transparent);
 }
 
 .mask-gradient::after {
   right: 0;
-  background: linear-gradient(to left, #111827, transparent);
+  background: linear-gradient(to left, #000, transparent);
+}
+@media (max-width: 764px) {
+  .mask-gradient::before,
+  .mask-gradient::after {
+    width: 50px;
+  }
 }
