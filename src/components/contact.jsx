@@ -16,14 +16,14 @@ export default function Contact() {
       type: "chars",
     });
     gsap.from(split.chars, {
-      y: -70,
+      y: -55,
       duration: 0.5,
       ease: "linear",
       stagger: 0.1,
       scrollTrigger: {
         trigger: textContainerRef.current,
-        start: "top 50%",
-        end: "top top",
+        start: "top 40%",
+        end: "20% 20%",
         once: true,
         scrub: true,
       },
@@ -31,24 +31,6 @@ export default function Contact() {
     return () => {
       split.revert();
     };
-  }, []);
-
-  useEffect(() => {
-    gsap.fromTo(
-      textContainerRef.current.querySelectorAll("input, textarea, button"),
-      { opacity: 0, scale: 0 },
-      {
-        opacity: 1,
-        scale: 1,
-        stagger: 0.2,
-        duration: 1.5,
-        ease: "back.out",
-        scrollTrigger: {
-          trigger: textContainerRef.current,
-          start: "top 15%",
-        },
-      }
-    );
   }, []);
 
   return (

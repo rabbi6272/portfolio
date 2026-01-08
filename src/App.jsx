@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Lenis from "@studio-freight/lenis";
 
+import { LoadingScreen } from "./components/loading";
 import Hero from "./components/hero";
 import About from "./components/about";
 import Skills from "./components/skills";
@@ -10,6 +11,8 @@ import Contact from "./components/contact";
 import Footer from "./components/footer";
 
 function App() {
+  const [showLoading, setShowLoading] = useState(true);
+
   useEffect(() => {
     const lenis = new Lenis({
       lerp: 0.1,
@@ -27,14 +30,14 @@ function App() {
   }, []);
 
   return (
-    <main className="bg-[#080807]">
+    <div className="bg-[#080807]">
       <Hero />
       <About />
       <Skills />
       <Projects />
       <Contact />
       <Footer />
-    </main>
+    </div>
   );
 }
 

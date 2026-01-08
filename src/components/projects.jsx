@@ -60,7 +60,7 @@ export default function Projects() {
       scrollTrigger: {
         trigger: textContainerRef.current,
         start: "top 50%",
-        end: "top top",
+        end: "2% 20%",
         once: true,
         scrub: true,
       },

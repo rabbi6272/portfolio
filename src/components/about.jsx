@@ -10,10 +10,36 @@ import {
 } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
   const aboutRef = useRef();
+
+  const textRef = useRef();
+  useEffect(() => {
+    if (!textRef.current) return;
+
+    let split = SplitText.create(textRef.current, {
+      type: "chars",
+    });
+    gsap.from(split.chars, {
+      y: -70,
+      duration: 0.5,
+      ease: "linear",
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: aboutRef.current,
+        start: "top 40%",
+        end: "20% 20%",
+        once: true,
+        scrub: true,
+      },
+    });
+    return () => {
+      split.revert();
+    };
+  }, []);
 
   // Staggered reveal + counters on scroll
   useEffect(() => {
@@ -60,11 +86,18 @@ export default function About() {
     <section
       id="about"
       ref={aboutRef}
-      className="relative min-h-screen bg-[#0B0B0A] text-[#E8E8E3] px-6 md:px-10 py-24 flex items-center"
+      className="relative min-h-screen bg-[#0B0B0A] text-[#E8E8E3] px-6 md:px-10 mt-[100vh] py-24 flex flex-col items-center overflow-hidden"
     >
       {/* Decorative background blobs */}
       <div className="pointer-events-none absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-purple-600/20 to-blue-500/10 blur-3xl rounded-full" />
       <div className="pointer-events-none absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tr from-emerald-500/10 to-cyan-500/10 blur-3xl rounded-full" />
+
+      <h3
+        ref={textRef}
+        className="text-5xl md:text-7xl text-[#EDEDE8] font-medium leading-[0.9] overflow-hidden mb-12"
+      >
+        About me
+      </h3>
 
       <div className="relative mx-auto w-full max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
         {/* Left column */}
@@ -74,9 +107,10 @@ export default function About() {
           </h2>
           <p className="about-stagger mt-4 text-base md:text-lg text-[#B9B9B1] max-w-prose">
             I’m <span className="font-semibold text-white">Fazle Rabbi</span>, a
-            full-stack developer from Bangladesh. I love building fast,
-            accessible web experiences with React, Tailwind, and GSAP—especially
-            micro-interactions and motion that bring interfaces to life.
+            passionate full-stack developer from Bangladesh. I love building
+            fast, accessible web experiences with React, Tailwind, and
+            GSAP—especially micro-interactions and motion that bring interfaces
+            to life.
           </p>
 
           <div className="about-stagger mt-6 text-2xl md:text-3xl font-medium">
