@@ -24,14 +24,15 @@ export default function About() {
       type: "chars",
     });
     gsap.from(split.chars, {
-      y: -70,
+      y: -20,
+      opacity: 0,
       duration: 0.5,
       ease: "linear",
       stagger: 0.1,
       scrollTrigger: {
         trigger: aboutRef.current,
         start: "top 40%",
-        end: "20% 20%",
+        end: "20% 30%",
         once: true,
         scrub: true,
       },
@@ -86,7 +87,7 @@ export default function About() {
     <section
       id="about"
       ref={aboutRef}
-      className="relative min-h-screen bg-[#0B0B0A] text-[#E8E8E3] px-6 md:px-10 mt-[100vh] py-24 flex flex-col items-center overflow-hidden"
+      className="relative h-screen bg-[#0B0B0A] text-[#E8E8E3] px-6 md:px-10 mt-[100vh] py-10 flex flex-col items-center overflow-hidden"
     >
       {/* Decorative background blobs */}
       <div className="pointer-events-none absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-purple-600/20 to-blue-500/10 blur-3xl rounded-full" />
@@ -94,7 +95,7 @@ export default function About() {
 
       <h3
         ref={textRef}
-        className="text-5xl md:text-7xl text-[#EDEDE8] font-medium leading-[0.9] overflow-hidden mb-12"
+        className="text-5xl md:text-7xl text-[#EDEDE8] font-medium leading-[0.9] overflow-hidden mb-10"
       >
         About me
       </h3>
@@ -340,7 +341,7 @@ const RotatingText = forwardRef((props, ref) => {
       }
       return Math.abs(staggerFrom - index) * staggerDuration;
     },
-    [staggerFrom, staggerDuration]
+    [staggerFrom, staggerDuration],
   );
 
   const getGSAPVars = (vars) => ({
@@ -387,7 +388,7 @@ const RotatingText = forwardRef((props, ref) => {
       getEase,
       getStaggerDelay,
       onNext,
-    ]
+    ],
   );
 
   const next = useCallback(() => {
@@ -415,7 +416,7 @@ const RotatingText = forwardRef((props, ref) => {
       const validIndex = Math.max(0, Math.min(index, texts.length - 1));
       handleIndexChange(validIndex);
     },
-    [texts.length, handleIndexChange]
+    [texts.length, handleIndexChange],
   );
 
   const reset = useCallback(() => {
@@ -430,7 +431,7 @@ const RotatingText = forwardRef((props, ref) => {
       jumpTo,
       reset,
     }),
-    [next, previous, jumpTo, reset]
+    [next, previous, jumpTo, reset],
   );
 
   useEffect(() => {
@@ -464,7 +465,7 @@ const RotatingText = forwardRef((props, ref) => {
       ref={containerRef}
       className={cn(
         " flex flex-wrap whitespace-pre-wrap relative overflow-hidden",
-        mainClassName
+        mainClassName,
       )}
       {...rest}
     >
@@ -473,7 +474,7 @@ const RotatingText = forwardRef((props, ref) => {
         className={cn(
           splitBy === "lines"
             ? "flex flex-col w-full"
-            : "flex flex-wrap whitespace-pre-wrap relative"
+            : "flex flex-wrap whitespace-pre-wrap relative",
         )}
         aria-hidden="true"
       >
@@ -488,7 +489,7 @@ const RotatingText = forwardRef((props, ref) => {
                   key={charIndex}
                   className={cn(
                     "inline-block rotating-element",
-                    elementLevelClassName
+                    elementLevelClassName,
                   )}
                 >
                   {char}

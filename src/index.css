@@ -26,11 +26,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Vollkorn", serif;
+  font-family: "Alpino";
   font-style: italic;
 }
 .hero-name {
-  font-family: "Alpino", Poppins, Helvetica, Arial, sans-serif;
   font-weight: 800;
 }
 ::-webkit-scrollbar {
@@ -68,7 +67,7 @@ h6 {
 .navbar-container {
   opacity: 0;
   animation: slideDown 1s forwards;
-  animation-delay: 2s;
+  animation-delay: 4s;
 }
 
 @keyframes slideDown {
@@ -84,7 +83,7 @@ h6 {
 #hero-text-left {
   opacity: 0;
   animation: slideInLeft 1s forwards;
-  animation-delay: 2.5s;
+  animation-delay: 4.3s;
 }
 
 @keyframes slideInLeft {
@@ -99,7 +98,7 @@ h6 {
 #hero-text-right {
   opacity: 0;
   animation: slideInRight 1s forwards;
-  animation-delay: 2.5s;
+  animation-delay: 4.3s;
 }
 
 @keyframes slideInRight {

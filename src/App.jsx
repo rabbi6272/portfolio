@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 
 import Lenis from "@studio-freight/lenis";
 
-import { LoadingScreen } from "./components/loading";
 import Hero from "./components/hero";
 import About from "./components/about";
 import Skills from "./components/skills";
@@ -10,9 +9,9 @@ import Projects from "./components/projects";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
 
-function App() {
-  const [showLoading, setShowLoading] = useState(true);
+import KinoApp from "./components/kinoApp";
 
+export default function App() {
   useEffect(() => {
     const lenis = new Lenis({
       lerp: 0.1,
@@ -32,6 +31,7 @@ function App() {
   return (
     <div className="bg-[#080807]">
       <Hero />
+      {/* <KinoApp /> */}
       <About />
       <Skills />
       <Projects />
@@ -40,5 +40,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

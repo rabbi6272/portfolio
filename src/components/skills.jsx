@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger);
+
 const skills = [
   {
     name: "React",
@@ -73,14 +74,15 @@ export default function Skills() {
       type: "chars",
     });
     gsap.from(split.chars, {
-      y: -70,
+      y: -20,
+      opacity: 0,
       duration: 0.5,
       ease: "linear",
       stagger: 0.1,
       scrollTrigger: {
         trigger: textContainerRef.current,
-        start: "top 10%",
-        end: "20% 10%",
+        start: "top 40%",
+        end: "20% 20%",
         once: true,
         scrub: true,
       },
@@ -100,13 +102,33 @@ export default function Skills() {
         ref={textRef}
         className="text-5xl md:text-7xl text-[#EDEDE8] font-medium leading-[0.9] overflow-hidden mb-12"
       >
-        Skills
+        My Skills
       </h3>
+
+      {/* <Marquee speed={70} className="text-lg text-[#B9B9B1]">
+        {skills.map((skill, i) => (
+          <div
+            key={`first-${i}`}
+            className="flex-shrink-0 flex flex-col items-center justify-center gap-4 bg-gray-800 border rounded-xl shadow-lg whitespace-nowrap w-[200px] md:w-[190px] h-[220px] md:[210px]"
+            style={{
+              borderColor: skill.color + "40", // 30% opacity
+              boxShadow: `0 4px 20px ${skill.color}30`, // Subtle glow
+            }}
+          >
+            <img
+              src={skill.icon}
+              alt={skill.name}
+              className="w-20 md:w-20 h-20 md:h-20 object-cover"
+            />
+
+            <span>{skill.name}</span>
+          </div>
+        ))}
+      </Marquee> */}
 
       {/* Infinite scroll container */}
       <div className="w-full md:w-[90%] overflow-hidden mask-gradient">
         <div className="skill-section flex gap-8 w-max text-gray-300 text-lg md:text-md font-normal">
-          {/* First set of skills */}
           {skills.map((skill, i) => (
             <div
               key={`first-${i}`}
@@ -122,12 +144,10 @@ export default function Skills() {
                 className="w-20 md:w-20 h-20 md:h-20 object-cover"
               />
 
-              {/* Skill Name */}
               <span>{skill.name}</span>
             </div>
           ))}
 
-          {/* Duplicate set for seamless loop */}
           {skills.map((skill, i) => (
             <div
               key={`second-${i}`}
