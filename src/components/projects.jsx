@@ -61,9 +61,9 @@ export default function Projects() {
       scrollTrigger: {
         trigger: textContainerRef.current,
         start: "top 60%",
-        end: "2% 20%",
+        end: "top 30%",
         once: true,
-        scrub: true,
+        scrub: 2,
       },
     });
     return () => {

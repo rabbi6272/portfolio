@@ -9,8 +9,6 @@ import Projects from "./components/projects";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
 
-import KinoApp from "./components/kinoApp";
-
 export default function App() {
   useEffect(() => {
     const lenis = new Lenis({

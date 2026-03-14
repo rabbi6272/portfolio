@@ -2,7 +2,6 @@
 
 :root {
   font-family: "Karla", Lato, Poppins, Helvetica, Arial, sans-serif;
-  /* line-height: 1.2; */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -14,12 +13,7 @@
   font-style: normal;
   font-display: swap;
 }
-@font-face {
-  font-family: "Chillax";
-  src: url("/font/Chillax.ttf") format("truetype");
-  font-style: normal;
-  font-display: swap;
-}
+
 h1,
 h2,
 h3,
@@ -42,18 +36,6 @@ h6 {
   background: transparent;
 }
 
-.blinking-cursor {
-  animation: blink 1s step-end infinite;
-}
-@keyframes blink {
-  from,
-  to {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-}
 
 .name-container {
   height: calc(100vh - 90px);
@@ -63,13 +45,11 @@ h6 {
     height: calc(100vh - 100px);
   }
 }
-
 .navbar-container {
   opacity: 0;
   animation: slideDown 1s forwards;
-  animation-delay: 4s;
+  animation-delay: 3.5s;
 }
-
 @keyframes slideDown {
   from {
     transform: translateY(-100%);
@@ -83,9 +63,8 @@ h6 {
 #hero-text-left {
   opacity: 0;
   animation: slideInLeft 1s forwards;
-  animation-delay: 4.3s;
+  animation-delay: 3.8s;
 }
-
 @keyframes slideInLeft {
   from {
     transform: translateX(-100%);
@@ -95,12 +74,12 @@ h6 {
     transform: translateX(0);
   }
 }
+
 #hero-text-right {
   opacity: 0;
   animation: slideInRight 1s forwards;
-  animation-delay: 4.3s;
+  animation-delay: 3.8s;
 }
-
 @keyframes slideInRight {
   from {
     transform: translateX(100%);
@@ -131,7 +110,6 @@ h6 {
 .mask-gradient {
   position: relative;
 }
-
 .mask-gradient::before,
 .mask-gradient::after {
   content: "";
@@ -142,12 +120,10 @@ h6 {
   z-index: 10;
   pointer-events: none;
 }
-
 .mask-gradient::before {
   left: 0;
   background: linear-gradient(to right, #000, transparent);
 }
-
 .mask-gradient::after {
   right: 0;
   background: linear-gradient(to left, #000, transparent);

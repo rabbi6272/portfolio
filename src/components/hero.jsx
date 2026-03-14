@@ -23,13 +23,13 @@ export default function Hero() {
       { opacity: 0 },
       {
         opacity: 1,
-        duration: 1,
+        duration: 0.8,
         ease: "linear",
       },
     );
     tl.to(helloTextRef.current, {
       opacity: 0,
-      duration: 1,
+      duration: 0.8,
       ease: "linear",
     });
     tl.set(helloTextRef.current, { display: "none" });
@@ -38,8 +38,8 @@ export default function Hero() {
       width: "100%",
       height: "100%",
       borderRadius: "0px",
-      duration: 1,
-      ease: "linear",
+      duration: 1.4,
+      ease: "power3.inOut",
     });
   }, []);
 
@@ -57,14 +57,15 @@ export default function Hero() {
       return;
     }
 
-    const tl = gsap.timeline({ delay: 3.2 }); // Start after bg and hello text animations
+    const tl = gsap.timeline({ delay: 3 }); // Start after bg and hello text animations
     tl.fromTo(
       chars,
-      { y: "1.1em", opacity: 0, willChange: "transform" },
+      { y: "0.8em", opacity: 0, willChange: "transform" },
       {
         y: "0em",
         opacity: 1,
-        duration: 0.8,
+        duration: 0.6,
+        ease: "power3.out",
         stagger: { each: 0.05, from: 0 },
         force3D: true,
         autoRound: false,
@@ -77,6 +78,7 @@ export default function Hero() {
         y: "0%",
         opacity: 1,
         duration: 1.2,
+        ease: "power3.out",
       },
     );
   }, []);
@@ -112,21 +114,21 @@ export default function Hero() {
 
   return (
     <>
+      {/* Hello Text */}
+      <div
+        ref={helloTextRef}
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+      >
+        <h2 className="text-[30px] md:text-[40px] lg:text-[50px] font-medium text-[#080807] m-0 text-center">
+          Hello, There!
+        </h2>
+      </div>
+
       <section ref={heroRef} className="h-auto bg-[#080807] overflow-hidden">
         <div
           ref={bgContainerRef}
           className="bg-[#E8E8E3] w-[40%] lg:w-[30%] 2xl:w-[20%] h-[20vh] xl:h-[30vh] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-xl"
         >
-          {/* Hello Text */}
-          <div
-            ref={helloTextRef}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
-          >
-            <h2 className="text-[30px] md:text-[40px] lg:text-[50px] font-medium text-[#080807] m-0 text-center">
-              Hello, There!
-            </h2>
-          </div>
-
           {/* Navigation bar*/}
           <nav className="navbar-container text-[#6B645C] h-[70px] flex items-center justify-between px-4 md:px-6 xl:px-8 leading-none overflow-hidden">
             <p className="hidden lg:block text-xl font-normal">
@@ -168,7 +170,7 @@ export default function Hero() {
           <div className="name-container relative flex flex-col items-center justify-center z-100">
             <h1
               ref={headingRef}
-              className="hero-name text-[120px] md:text-[140px] lg:text-[160px] xl:text-[240px] font-semibold leading-[.8] lg:leading-none text-[#080807] mb-0 lg:mb-4 text-center whitespace-pre"
+              className="hero-name text-[120px] md:text-[140px] lg:text-[160px] xl:text-[240px] font-semibold leading-[.8] text-[#080807] mb-0 lg:mb-4 text-center whitespace-pre"
               aria-label="FAZLE RABBI"
             >
               {"FAZLE RABBI".split("").map((ch, i) =>
@@ -193,6 +195,7 @@ export default function Hero() {
                 ),
               )}
             </h1>
+
             <div className="w-full px-4 md:px-6 lg:px-10 flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-0">
               <div className="flex-1" id="hero-text-left">
                 <p className="text-lg lg:text-xl font-normal lg:font-medium text-[#6B645C] w-full md:max-w-[300px] lg:max-w-[350px] text-justify">

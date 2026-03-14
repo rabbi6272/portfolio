@@ -81,8 +81,8 @@ export default function Skills() {
       stagger: 0.1,
       scrollTrigger: {
         trigger: textContainerRef.current,
-        start: "top 40%",
-        end: "20% 20%",
+        start: "top 30%",
+        end: "top top",
         once: true,
         scrub: true,
       },

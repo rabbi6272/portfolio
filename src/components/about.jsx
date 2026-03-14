@@ -31,8 +31,8 @@ export default function About() {
       stagger: 0.1,
       scrollTrigger: {
         trigger: aboutRef.current,
-        start: "top 40%",
-        end: "20% 30%",
+        start: "top 50%",
+        end: "top 20%",
         once: true,
         scrub: true,
       },
@@ -103,15 +103,15 @@ export default function About() {
       <div className="relative mx-auto w-full max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
         {/* Left column */}
         <div>
-          <h2 className="about-stagger text-4xl md:text-6xl font-semibold leading-tight text-[#EDEDE8]">
+          <h2 className="about-stagger text-4xl md:text-5xl font-semibold leading-tight text-[#EDEDE8]">
             Undergraduate CSE Student at RUET
           </h2>
-          <p className="about-stagger mt-4 text-base md:text-lg text-[#B9B9B1] max-w-prose">
+          <p className="about-stagger mt-4 text-base md:text-lg text-[#B9B9B1] max-w-prose text-justify">
             I’m <span className="font-semibold text-white">Fazle Rabbi</span>, a
-            passionate full-stack developer from Bangladesh. I love building
-            fast, accessible web experiences with React, Tailwind, and
-            GSAP—especially micro-interactions and motion that bring interfaces
-            to life.
+            passionate full-stack developer, creative coder and tech enthusiast
+            from Bangladesh. I love building fast, accessible web experiences
+            that bring interfaces to life. I’m always eager to learn, create,
+            and contribute to the open-source community.
           </p>
 
           <div className="about-stagger mt-6 text-2xl md:text-3xl font-medium">
@@ -128,14 +128,13 @@ export default function About() {
           </div>
 
           {/* Chips */}
-          {/* <div className="about-stagger mt-6 flex flex-wrap gap-2">
+          <div className="about-stagger mt-2 flex flex-wrap gap-2">
             {[
-              "React",
-              "GSAP",
-              "Tailwind",
-              "UI Animation",
+              "Creative Coding",
               "Algorithms",
               "Open Source",
+              "JavaScript",
+              "GSAP",
             ].map((chip) => (
               <span
                 key={chip}
@@ -144,19 +143,19 @@ export default function About() {
                 {chip}
               </span>
             ))}
-          </div> */}
+          </div>
 
           {/* CTAs */}
-          <div className="about-stagger mt-8 flex gap-3">
+          <div className="about-stagger mt-3 flex gap-3">
             <a
               href="#projects"
-              className="px-5 py-2.5 rounded-lg bg-emerald-500 text-[#0A0A09] font-semibold hover:bg-emerald-400 transition-colors"
+              className="px-5 py-2.5 rounded-full bg-emerald-500 text-[#0A0A09] font-semibold hover:bg-emerald-400 transition-colors"
             >
               View Projects
             </a>
             <a
               href="#contact"
-              className="px-5 py-2.5 rounded-lg border border-white/10 text-[#EDEDE8] hover:border-white/30 transition-colors"
+              className="px-5 py-2.5 rounded-full border border-white/10 text-[#EDEDE8] hover:border-white/30 transition-colors"
             >
               Contact Me
             </a>
