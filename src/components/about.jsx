@@ -87,7 +87,7 @@ export default function About() {
     <section
       id="about"
       ref={aboutRef}
-      className="relative h-screen bg-[#0B0B0A] text-[#E8E8E3] px-6 md:px-10 mt-[100vh] py-10 flex flex-col items-center overflow-hidden"
+      className="relative min-h-screen bg-[#0B0B0A] text-[#E8E8E3] px-6 md:px-10 mt-[100vh] py-10 flex flex-col items-center overflow-hidden"
     >
       {/* Decorative background blobs */}
       <div className="pointer-events-none absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-purple-600/20 to-blue-500/10 blur-3xl rounded-full" />
