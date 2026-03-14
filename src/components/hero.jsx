@@ -200,9 +200,11 @@ export default function Hero() {
                   visually stunning and user-friendly web experiences that leave
                   a mark.
                 </p>
-                <button className="px-10 py-3 bg-[#6B645C] hover:bg-[#080807] text-[#E8E8E3] text-xl rounded-full mt-4 transition duration-300">
-                  Contact
-                </button>
+                <a href="#contact">
+                  <button className="px-8 py-3 bg-[#6B645C] hover:bg-[#080807] text-[#E8E8E3] text-xl rounded-full mt-4 transition duration-300">
+                    Get in Touch
+                  </button>
+                </a>
               </div>
               <div
                 className="flex-1 w-full flex items-center justify-between lg:justify-end"
@@ -219,7 +221,7 @@ export default function Hero() {
                   <p className="text-lg lg:text-2xl font-normal lg:font-medium text-[#6B645C] m-0">
                     Available for work?
                   </p>
-                  <h1 className="text-right text-[60px] lg:text-[100px] font-medium text-[#080807] m-0">
+                  <h1 className="text-right text-[60px] lg:text-[100px] font-medium text-[#080807] leading-20 m-0">
                     Yes
                   </h1>
                 </div>

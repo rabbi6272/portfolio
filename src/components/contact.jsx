@@ -16,14 +16,15 @@ export default function Contact() {
       type: "chars",
     });
     gsap.from(split.chars, {
-      y: -55,
+      y: -20,
+      opacity: 0,
       duration: 0.5,
       ease: "linear",
       stagger: 0.1,
       scrollTrigger: {
         trigger: textContainerRef.current,
-        start: "top 40%",
-        end: "20% 20%",
+        start: "top 50%",
+        end: "20% 30%",
         once: true,
         scrub: true,
       },
@@ -43,7 +44,7 @@ export default function Contact() {
         ref={textRef}
         className="text-5xl md:text-7xl text-[#EDEDE8] font-medium leading-[0.9] overflow-hidden mb-12"
       >
-        Contact me
+        Contact Me
       </h3>
 
       <p className="text-center text-[#B9B9B1] text-lg md:text-xl max-w-2xl mb-8">
@@ -52,24 +53,24 @@ export default function Contact() {
         connecting with fellow developers.
       </p>
 
-      <form className="w-full max-w-md flex flex-col gap-4">
+      <form className="bg-gray-900 p-5 rounded-xl w-full max-w-md flex flex-col gap-2">
         <input
           type="text"
           placeholder="Your Name"
           required
-          className="p-4 rounded-lg bg-gray-800 text-[#EDEDE8] outline-none focus:ring-2 focus:ring-blue-500 transition placeholder:text-gray-400"
+          className="p-3 rounded-lg bg-gray-800 text-[#EDEDE8] outline-none focus:ring-2 focus:ring-blue-500 transition placeholder:text-gray-400"
         />
         <input
           type="email"
           placeholder="Your Email"
           required
-          className="p-4 rounded-lg bg-gray-800 text-[#EDEDE8] outline-none focus:ring-2 focus:ring-blue-500 transition placeholder:text-gray-400"
+          className="p-3 rounded-lg bg-gray-800 text-[#EDEDE8] outline-none focus:ring-2 focus:ring-blue-500 transition placeholder:text-gray-400"
         />
         <textarea
           rows="5"
           placeholder="Your Message"
           required
-          className="p-4 rounded-lg bg-gray-800 text-[#EDEDE8] outline-none focus:ring-2 focus:ring-blue-500 transition placeholder:text-gray-400 resize-none"
+          className="p-3 rounded-lg bg-gray-800 text-[#EDEDE8] outline-none focus:ring-2 focus:ring-blue-500 transition placeholder:text-gray-400 resize-none"
         />
         <button
           type="submit"

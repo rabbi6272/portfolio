@@ -53,13 +53,14 @@ export default function Projects() {
       type: "chars",
     });
     gsap.from(split.chars, {
-      y: -70,
+      y: -20,
+      opacity: 0,
       duration: 0.5,
       ease: "linear",
       stagger: 0.1,
       scrollTrigger: {
         trigger: textContainerRef.current,
-        start: "top 50%",
+        start: "top 60%",
         end: "2% 20%",
         once: true,
         scrub: true,
@@ -70,31 +71,37 @@ export default function Projects() {
     };
   }, []);
 
-  // Horizontal Scroll
   useEffect(() => {
-    const el = containerRef.current;
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray(
+        ".project-card-from-right, .project-card-from-left",
+      );
 
-    // Set initial position
-    gsap.set(el, { xPercent: 0 });
+      cards.forEach((card) => {
+        gsap.to(card, {
+          x: 0,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: card,
+            start: "top bottom",
+            end: "top 20%",
+            scrub: 1,
+            once: true,
+            invalidateOnRefresh: true,
+          },
+        });
+      });
+    }, textContainerRef);
 
-    const animation = gsap.to(el, {
-      xPercent: -100,
-      ease: "none",
-      scrollTrigger: {
-        trigger: wrapperRef.current,
-        pin: true,
-        scrub: 2,
-        snap: 1 / (projects.length - 1),
-        start: "top top",
-        end: () => `+=${window.innerWidth * 4}`,
-        invalidateOnRefresh: true,
-      },
-    });
-
-    return () => {
-      animation.kill();
-    };
+    return () => ctx.revert();
   }, []);
+
+  const handleClass = (index) => {
+    return index % 2 === 0
+      ? "project-card-from-right"
+      : "project-card-from-left";
+  };
 
   return (
     <section id="projects" ref={textContainerRef} className="text-gray-100">
@@ -102,21 +109,17 @@ export default function Projects() {
         ref={textRef}
         className="text-5xl md:text-7xl text-[#EDEDE8] font-medium leading-[0.9] overflow-hidden mb-12 text-center "
       >
-        My works
+        My Works
       </h1>
 
-      <div ref={wrapperRef} className="wrapper overflow-hidden">
+      <div ref={wrapperRef} className="wrapper h-[500vh] overflow-hidden">
         {/* wrapper is trigger */}
-        <div
-          ref={containerRef}
-          className="flex w-[400vw] h-auto"
-          id="horizontal-container"
-        >
+        <div ref={containerRef} className="h-auto" id="horizontal-container">
           {/* container is scrollable */}
           {projects.map((proj, i) => (
             <div
               key={i}
-              className="project-card h-screen w-screen flex-shrink-0 grid place-items-center"
+              className={`${handleClass(i)} h-screen w-screen flex-shrink-0 grid place-items-center`}
             >
               <div className="w-[95vw] md:w-[85vw] xl:w-[80vw] h-[70vh] md:h-[80vh] xl:h-[90vh] bg-gray-900 border border-gray-700 rounded-lg flex flex-col items-center justify-center p-2">
                 <img

@@ -168,3 +168,12 @@ h6 {
     opacity: 0;
   }
 }
+
+.project-card-from-right {
+  transform: translateX(100%);
+  opacity: 0;
+}
+.project-card-from-left {
+  transform: translateX(-100%);
+  opacity: 0;
+}

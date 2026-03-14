@@ -31,7 +31,6 @@ export default function App() {
   return (
     <div className="bg-[#080807]">
       <Hero />
-      {/* <KinoApp /> */}
       <About />
       <Skills />
       <Projects />
