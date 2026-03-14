@@ -87,13 +87,13 @@ export default function Contact() {
             href="https://facebook.com/frabbi6272"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-blue-500 transition duration-300 text-lg"
+            className="hover:text-blue-500 transition duration-300 text-lg cursor-pointer"
           >
             Facebook
           </a>
           <a
-            href="mailto:mmrabbi625442@gmail.com" // Replace with your email.email@google.com"
-            className="hover:text-blue-500 transition duration-300 text-lg"
+            href="mailto:mmrabbi625442@gmail.com"
+            className="hover:text-blue-500 transition duration-300 text-lg cursor-pointer"
           >
             Email
           </a>
@@ -101,7 +101,7 @@ export default function Contact() {
             href="https://github.com/rabbi6272"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-blue-500 transition duration-300 text-lg"
+            className="hover:text-blue-500 transition duration-300 text-lg cursor-pointer"
           >
             GitHub
           </a>
@@ -109,7 +109,7 @@ export default function Contact() {
             href="https://www.linkedin.com/in/fazle-rabbi-b48a722a2/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-blue-500 transition duration-300 text-lg"
+            className="hover:text-blue-500 transition duration-300 text-lg cursor-pointer"
           >
             LinkedIn
           </a>

@@ -14,7 +14,35 @@ export default function App() {
     const lenis = new Lenis({
       lerp: 0.1,
       smoothWheel: true,
+      anchors: true,
     });
+
+    const handleAnchorClick = (event) => {
+      const link = event.target.closest('a[href^="#"]');
+      if (!link) return;
+
+      const href = link.getAttribute("href");
+      if (!href || href === "#") return;
+
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      event.preventDefault();
+      lenis.scrollTo(target);
+      window.history.pushState(null, "", href);
+    };
+
+    document.addEventListener("click", handleAnchorClick);
+
+    if (window.location.hash) {
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        requestAnimationFrame(() => {
+          lenis.scrollTo(target, { immediate: true });
+        });
+      }
+    }
+
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -22,6 +50,7 @@ export default function App() {
     requestAnimationFrame(raf);
 
     return () => {
+      document.removeEventListener("click", handleAnchorClick);
       lenis.destroy();
     };
   }, []);

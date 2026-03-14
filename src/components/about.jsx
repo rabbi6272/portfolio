@@ -90,12 +90,12 @@ export default function About() {
       className="relative min-h-screen bg-[#0B0B0A] text-[#E8E8E3] px-6 md:px-10 mt-[100vh] py-10 flex flex-col items-center overflow-hidden"
     >
       {/* Decorative background blobs */}
-      <div className="pointer-events-none absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-purple-600/20 to-blue-500/10 blur-3xl rounded-full" />
-      <div className="pointer-events-none absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tr from-emerald-500/10 to-cyan-500/10 blur-3xl rounded-full" />
+      <div className="pointer-events-none absolute -top-10 -left-10 w-50 md:w-80 h-50 md:h-80 bg-gradient-to-br from-purple-600/20 to-blue-500/10 blur-3xl rounded-full" />
+      <div className="pointer-events-none absolute -bottom-10 -right-10 w-50 md:w-80 h-50 md:h-80 bg-gradient-to-tr from-emerald-500/10 to-cyan-500/10 blur-3xl rounded-full" />
 
       <h3
         ref={textRef}
-        className="text-5xl md:text-7xl text-[#EDEDE8] font-medium leading-[0.9] overflow-hidden mb-10"
+        className="text-5xl md:text-7xl text-[#EDEDE8] font-medium leading-[1] overflow-hidden mb-12 mt-2"
       >
         About me
       </h3>
@@ -125,24 +125,6 @@ export default function About() {
               ]}
               splitBy="characters"
             />
-          </div>
-
-          {/* Chips */}
-          <div className="about-stagger mt-2 flex flex-wrap gap-2">
-            {[
-              "Creative Coding",
-              "Algorithms",
-              "Open Source",
-              "JavaScript",
-              "GSAP",
-            ].map((chip) => (
-              <span
-                key={chip}
-                className="px-3 py-1 rounded-full text-sm bg-white/5 border border-white/10 text-[#D9D9D2] backdrop-blur"
-              >
-                {chip}
-              </span>
-            ))}
           </div>
 
           {/* CTAs */}
@@ -214,8 +196,26 @@ export default function About() {
             </div>
           </div>
 
+          {/* Chips */}
+          <div className="about-stagger mt-2 flex flex-wrap gap-2">
+            {[
+              "Creative Coding",
+              "Algorithms",
+              "Open Source",
+              "JavaScript",
+              "GSAP",
+            ].map((chip) => (
+              <span
+                key={chip}
+                className="px-3 py-1 rounded-full text-sm bg-white/5 border border-white/10 text-[#D9D9D2] backdrop-blur"
+              >
+                {chip}
+              </span>
+            ))}
+          </div>
+
           {/* Current Focus */}
-          <div className="about-stagger rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+          {/* <div className="about-stagger rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
             <h3 className="text-2xl font-medium text-[#EDEDE8]">
               Current Focus
             </h3>
@@ -224,36 +224,6 @@ export default function About() {
               <li>Full-Stack Web Development</li>
               <li>Learning through Open Source</li>
             </ul>
-          </div>
-
-          {/* Stats */}
-          {/* <div className="about-stagger rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
-            <div className="grid grid-cols-3 gap-4 text-center">
-              <div>
-                <div className="text-3xl font-extrabold text-[#EDEDE8]">
-                  <span data-counter="12">0</span>
-                </div>
-                <p className="text-xs uppercase tracking-wide text-[#AFAFA8] mt-1">
-                  Projects
-                </p>
-              </div>
-              <div>
-                <div className="text-3xl font-extrabold text-[#EDEDE8]">
-                  <span data-counter="25">0</span>
-                </div>
-                <p className="text-xs uppercase tracking-wide text-[#AFAFA8] mt-1">
-                  UI Animations
-                </p>
-              </div>
-              <div>
-                <div className="text-3xl font-extrabold text-[#EDEDE8]">
-                  <span data-counter="3">0</span>
-                </div>
-                <p className="text-xs uppercase tracking-wide text-[#AFAFA8] mt-1">
-                  Hackathons
-                </p>
-              </div>
-            </div>
           </div> */}
         </div>
       </div>

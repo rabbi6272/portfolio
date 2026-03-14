@@ -1,16 +1,27 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const heroRef = useRef();
   const helloTextRef = useRef();
   const avatarRef = useRef();
   const headingRef = useRef();
   const bgContainerRef = useRef();
   const bottomRef = useRef();
+  const menuButtonRef = useRef();
+  const mobileOverlayRef = useRef();
+  const mobileLinkRefs = useRef([]);
+  const menuOriginRef = useRef({ x: 0, y: 0 });
+
+  const mobileLinks = [
+    { label: "About", href: "#about" },
+    { label: "Works", href: "#projects" },
+    { label: "Contact", href: "#contact" },
+  ];
 
   //  bg-container and hello text animation on page load
   useEffect(() => {
@@ -57,14 +68,14 @@ export default function Hero() {
       return;
     }
 
-    const tl = gsap.timeline({ delay: 3 }); // Start after bg and hello text animations
+    const tl = gsap.timeline({ delay: 3 });
     tl.fromTo(
       chars,
       { y: "0.8em", opacity: 0, willChange: "transform" },
       {
         y: "0em",
         opacity: 1,
-        duration: 0.6,
+        duration: 0.7,
         ease: "power3.out",
         stagger: { each: 0.05, from: 0 },
         force3D: true,
@@ -103,13 +114,95 @@ export default function Hero() {
         end: "bottom top",
         scrub: true,
         pin: false,
+        onLeave: () => {
+          gsap.set(heroRef.current, { pointerEvents: "none" });
+        },
+        onEnterBack: () => {
+          gsap.set(heroRef.current, { pointerEvents: "auto" });
+        },
       },
     });
   }, []);
 
+  const openMobileMenu = () => {
+    if (!mobileOverlayRef.current || !menuButtonRef.current) return;
+
+    const buttonRect = menuButtonRef.current.getBoundingClientRect();
+    const originX = buttonRect.left + buttonRect.width / 2;
+    const originY = buttonRect.top + buttonRect.height / 2;
+    menuOriginRef.current = { x: originX, y: originY };
+
+    gsap.set(mobileOverlayRef.current, {
+      display: "flex",
+      pointerEvents: "auto",
+      clipPath: `circle(0px at ${originX}px ${originY}px)`,
+    });
+    gsap.set(mobileLinkRefs.current, {
+      opacity: 0,
+      y: 20,
+    });
+
+    gsap
+      .timeline({
+        onStart: () => setIsMenuOpen(true),
+      })
+      .to(mobileOverlayRef.current, {
+        clipPath: `circle(150vmax at ${originX}px ${originY}px)`,
+        duration: 0.9,
+        ease: "power3.inOut",
+      })
+      .to(
+        mobileLinkRefs.current,
+        {
+          delay: 0.3,
+          opacity: 1,
+          y: 0,
+          duration: 0.4,
+          stagger: 0.08,
+          ease: "power2.out",
+        },
+        "<0.25",
+      );
+  };
+
+  const closeMobileMenu = () => {
+    if (!mobileOverlayRef.current) return;
+    const { x, y } = menuOriginRef.current;
+
+    gsap
+      .timeline({
+        onComplete: () => {
+          gsap.set(mobileOverlayRef.current, {
+            display: "none",
+            pointerEvents: "none",
+          });
+          setIsMenuOpen(false);
+        },
+      })
+      .to(mobileLinkRefs.current, {
+        opacity: 0,
+        y: 20,
+        duration: 0.2,
+        stagger: 0.05,
+        ease: "power2.in",
+      })
+      .to(
+        mobileOverlayRef.current,
+        {
+          clipPath: `circle(0px at ${x}px ${y}px)`,
+          duration: 0.55,
+          ease: "power3.inOut",
+        },
+        "<",
+      );
+  };
+
   const handleMenuToggle = () => {
-    // Implement menu toggle functionality for mobile view
-    alert("Menu toggle clicked!");
+    if (isMenuOpen) {
+      closeMobileMenu();
+      return;
+    }
+    openMobileMenu();
   };
 
   return (
@@ -119,9 +212,48 @@ export default function Hero() {
         ref={helloTextRef}
         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
       >
-        <h2 className="text-[30px] md:text-[40px] lg:text-[50px] font-medium text-[#080807] m-0 text-center">
+        <h2 className="text-[30px] md:text-[40px] font-medium text-[#080807] m-0 text-center">
           Hello, There!
         </h2>
+      </div>
+
+      {/* Mobile menu overlay */}
+      <div
+        ref={mobileOverlayRef}
+        className="fixed inset-0 z-[200] hidden items-center justify-center bg-[#080807] lg:hidden"
+      >
+        <span
+          className="absolute top-4 right-4 cursor-pointer"
+          onClick={closeMobileMenu}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            viewBox="0 0 15 15"
+          >
+            <path
+              fill="#e8e8e3"
+              d="M3.64 2.27L7.5 6.13l3.84-3.84A.92.92 0 0 1 12 2a1 1 0 0 1 1 1a.9.9 0 0 1-.27.66L8.84 7.5l3.89 3.89A.9.9 0 0 1 13 12a1 1 0 0 1-1 1a.92.92 0 0 1-.69-.27L7.5 8.87l-3.85 3.85A.92.92 0 0 1 3 13a1 1 0 0 1-1-1a.9.9 0 0 1 .27-.66L6.16 7.5L2.27 3.61A.9.9 0 0 1 2 3a1 1 0 0 1 1-1c.24.003.47.1.64.27"
+            />
+          </svg>
+        </span>
+
+        <div className="flex flex-col items-center gap-8">
+          {mobileLinks.map((link, index) => (
+            <a
+              key={link.href}
+              ref={(element) => {
+                mobileLinkRefs.current[index] = element;
+              }}
+              href={link.href}
+              onClick={closeMobileMenu}
+              className="text-[#e8e8e3] text-4xl font-medium leading-none"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
       </div>
 
       <section ref={heroRef} className="h-auto bg-[#080807] overflow-hidden">
@@ -160,7 +292,12 @@ export default function Hero() {
               </a>
             </div>
             <div className="block lg:hidden">
-              <button className="cursor-pointer" onClick={handleMenuToggle}>
+              <button
+                ref={menuButtonRef}
+                className="cursor-pointer"
+                onClick={handleMenuToggle}
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              >
                 <img src="menu.svg" alt="menu" />
               </button>
             </div>
@@ -170,7 +307,7 @@ export default function Hero() {
           <div className="name-container relative flex flex-col items-center justify-center z-100">
             <h1
               ref={headingRef}
-              className="hero-name text-[120px] md:text-[140px] lg:text-[160px] xl:text-[240px] font-semibold leading-[.8] text-[#080807] mb-0 lg:mb-4 text-center whitespace-pre"
+              className="hero-name text-[120px] md:text-[140px] lg:text-[160px] xl:text-[240px] font-semibold leading-[.8] text-[#080807] pb-10 sm:pb-0 lg:mb-4 text-center whitespace-pre"
               aria-label="FAZLE RABBI"
             >
               {"FAZLE RABBI".split("").map((ch, i) =>

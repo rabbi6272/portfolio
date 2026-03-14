@@ -129,7 +129,27 @@ export default function Projects() {
                 />
                 <div className="w-full flex flex-col items-center p-4 md:p-6 lg:p-8">
                   <h2 className="text-4xl font-medium font-sans mb-2">
-                    <a href={proj.link}>{proj.title}</a>
+                    <a
+                      href={proj.link}
+                      className="flex items-center justify-center gap-2"
+                    >
+                      {proj.title}{" "}
+                      <span className="hover:translate-x-1 transition-transform duration-300 bg-gray-700 p-2 rounded-full">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="15px"
+                          height="15px"
+                          viewBox="0 0 2048 2048"
+                        >
+                          <path
+                            fill="#fff"
+                            d="M1024 0h1024v1024h-128V219L93 2045l-90-90L1829 128h-805z"
+                            stroke-width="51"
+                            stroke="#fff"
+                          />
+                        </svg>
+                      </span>
+                    </a>
                   </h2>
                   <p className="max-w-full md:max-w-[80%] xl:max-w-[60%] text-gray-300 text-justify">
                     {proj.desc}
