@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+import { Analytics } from "@vercel/analytics/react";
+
 import Lenis from "@studio-freight/lenis";
 
 import Hero from "./components/hero";
@@ -57,6 +59,7 @@ export default function App() {
 
   return (
     <div className="bg-[#080807]">
+      <Analytics />
       <Hero />
       <About />
       <Skills />
